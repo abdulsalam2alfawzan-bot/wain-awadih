@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1d33">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+  <title>لوحة الشريك — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="partner-dashboard">
+  <div data-site-header></div>
+  <main id="main-content" class="section">
+    <div class="container">
+      <div id="partnerHeader" class="request-header"></div>
+      <div class="tabs" role="tablist" aria-label="أقسام لوحة الشريك">
+        <button class="tab-btn active" type="button" data-tab="overview" role="tab" aria-selected="true">نظرة عامة</button>
+        <button class="tab-btn" type="button" data-tab="referrals" role="tab" aria-selected="false">الإحالات</button>
+        <button class="tab-btn" type="button" data-tab="objections" role="tab" aria-selected="false">الاعتراضات</button>
+        <button class="tab-btn" type="button" data-tab="ratings" role="tab" aria-selected="false">التقييمات</button>
+        <button class="tab-btn" type="button" data-tab="discounts" role="tab" aria-selected="false">الخصومات</button>
+        <button class="tab-btn" type="button" data-tab="billing" role="tab" aria-selected="false">الرسوم والتسوية</button>
+        <button class="tab-btn" type="button" data-tab="profile" role="tab" aria-selected="false">الملف والإشعارات</button>
+      </div>
+
+      <section class="tab-panel active" data-panel="overview" role="tabpanel">
+        <div id="overviewStats" class="stats-grid"></div>
+        <div class="dashboard-grid two mt-16">
+          <section class="card"><h2>آخر الإحالات</h2><div id="latestReferrals"></div></section>
+          <aside class="card"><h2>حالة الحساب</h2><div id="accountStatus"></div></aside>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="referrals" role="tabpanel">
+        <div class="section-head"><h2>إدارة الإحالات</h2><p>يمكن تأكيد الوصول وبدء الاستقبال أو الفحص وتحديث نتيجة التعامل.</p></div>
+        <div id="referralsTable"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="objections" role="tabpanel">
+        <div class="section-head"><h2>سجل الاعتراضات</h2><p>الاعتراض لا يلغي الرسم أو التقييم تلقائيًا، بل يحوله للمراجعة.</p></div>
+        <div id="objectionsTable"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="ratings" role="tabpanel">
+        <div class="section-head"><h2>التقييمات الموثقة</h2><p>لا يستطيع الشريك حذف التقييم بنفسه، ويمكن تقديم اعتراض مسبب.</p></div>
+        <div id="ratingsList"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="discounts" role="tabpanel">
+        <div class="dashboard-grid two">
+          <section class="card"><h2>الخصومات الحالية</h2><div id="discountsList"></div></section>
+          <section class="card"><h2>إضافة خصم تجريبي</h2>
+            <form id="discountForm" class="form-grid" novalidate>
+              <div class="form-field"><label class="required" for="discountPercent">النسبة %</label><input id="discountPercent" type="number" min="1" max="50" required></div>
+              <div class="form-field"><label class="required" for="discountServices">الخدمات المشمولة</label><input id="discountServices" maxlength="160" placeholder="مثال: أجور اليد لفحص المحرك" required></div>
+              <div class="form-field"><label class="required" for="discountConditions">الشروط</label><textarea id="discountConditions" maxlength="500" required></textarea></div>
+              <div class="form-grid two"><div class="form-field"><label class="required" for="discountStart">يبدأ</label><input id="discountStart" type="date" required></div><div class="form-field"><label class="required" for="discountEnd">ينتهي</label><input id="discountEnd" type="date" required></div></div>
+              <button class="btn btn-primary" type="submit">اعتماد داخل النسخة التجريبية</button>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="billing" role="tabpanel">
+        <div id="billingStats" class="stats-grid"></div>
+        <div class="card mt-16"><div class="button-row"><button id="issueClaim" class="btn btn-dark" type="button">إصدار مطالبة حسب السياسة</button><span class="muted small">عند 100 ريال أو تسوية شهرية.</span></div></div>
+        <div class="dashboard-grid two mt-16">
+          <section class="card"><h2>المطالبات</h2><div id="claimsList"></div></section>
+          <section class="card"><h2>المدفوعات والإيصالات</h2><div id="paymentsList"></div></section>
+        </div>
+        <section class="card mt-16"><h2>سجل الرسوم</h2><div id="feesList"></div></section>
+      </section>
+
+      <section class="tab-panel" data-panel="profile" role="tabpanel">
+        <div class="dashboard-grid two">
+          <section class="card"><h2>بيانات الشريك</h2><div id="profileData"></div></section>
+          <section class="card"><h2>إشعارات المنصة</h2><div id="notificationsList"></div></section>
+        </div>
+        <button id="logoutButton" class="btn btn-danger mt-16" type="button">تسجيل الخروج</button>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="objectionDialog" class="dialog">
+    <form method="dialog" class="dialog-shell" id="objectionForm">
+      <div class="dialog-head"><div><div class="kicker">اعتراض</div><h2 id="objectionTitle">اعتراض على الإحالة</h2></div><button class="dialog-close" type="submit" value="cancel" aria-label="إغلاق">×</button></div>
+      <input id="objectionReferralId" type="hidden"><input id="objectionRatingId" type="hidden"><input id="objectionType" type="hidden">
+      <div class="form-field"><label class="required" for="objectionReason">السبب</label><select id="objectionReason" required></select></div>
+      <div class="form-field mt-16"><label for="objectionDetails">التوضيح</label><textarea id="objectionDetails" maxlength="800"></textarea></div>
+      <div class="screen-actions"><button class="btn btn-light" type="submit" value="cancel">إلغاء</button><button class="btn btn-primary" type="submit" value="default">إرسال الاعتراض</button></div>
+    </form>
+  </dialog>
+
+  <div data-site-footer></div>
+  <script defer src="assets/config.js"></script>
+  <script defer src="assets/automotive-data.js"></script>
+  <script defer src="assets/storage.js"></script>
+  <script defer src="assets/seed.js"></script>
+  <script defer src="assets/lifecycle.js"></script>
+  <script defer src="assets/common.js"></script>
+  <script defer src="assets/dashboard.js"></script>
+</body>
+</html>

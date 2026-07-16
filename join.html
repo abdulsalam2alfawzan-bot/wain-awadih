@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1d33">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+  <title>انضم كشريك — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="join">
+  <div data-site-header></div>
+  <main id="main-content" class="flow-shell">
+    <div class="container flow-layout">
+      <aside class="flow-sidebar">
+        <div class="demo-badge">طلب انضمام تجريبي</div>
+        <h1>انضم إلى شبكة الشركاء</h1>
+        <p>النموذج يتكيف مع الورشة أو محل قطع الغيار أو مقدم السطحة.</p>
+        <div class="progress-wrap"><div class="progress-meta"><span id="joinProgressLabel">نوع الشريك</span><span id="joinProgressPercent">25%</span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25"><div id="joinProgressBar" class="progress-bar"></div></div></div>
+        <div class="legal-note mt-24">لا يطلب نموذج محل القطع إدخال المخزون، ولا يطلب نموذج السطحة بيانات ورشة لا تخصه.</div>
+      </aside>
+
+      <div class="flow-content">
+        <form id="joinForm" novalidate>
+          <section class="flow-screen active" data-join-step="1" tabindex="-1">
+            <div class="kicker">الخطوة 1 من 4</div><h2>نوع الشريك والبيانات الأساسية</h2>
+            <div class="form-grid two">
+              <div class="form-field"><label class="required" for="partnerType">نوع الشريك</label><select id="partnerType" required><option value="">اختر</option><option value="workshop">ورشة أو مركز فحص</option><option value="maintenance">مركز صيانة دورية</option><option value="parts">محل قطع غيار</option><option value="tow">مقدم خدمة سطحة</option></select></div>
+              <div class="form-field"><label class="required" for="businessName">اسم المنشأة أو مقدم الخدمة</label><input id="businessName" maxlength="100" required></div>
+              <div class="form-field"><label class="required" for="joinCity">المدينة الرئيسية</label><select id="joinCity" required></select></div>
+              <div class="form-field"><label class="required" for="joinWhatsapp">رقم واتساب</label><input id="joinWhatsapp" inputmode="tel" placeholder="05XXXXXXXX" maxlength="10" required></div>
+              <div class="form-field"><label class="required" for="exactLocation">الموقع أو وصفه</label><input id="exactLocation" maxlength="180" required></div>
+              <div class="form-field"><label class="required" for="workingHours">ساعات العمل</label><input id="workingHours" maxlength="100" placeholder="مثال: 8 ص إلى 10 م" required></div>
+            </div>
+            <div class="screen-actions"><a class="btn btn-ghost" href="index.html">إلغاء</a><button class="btn btn-primary" type="button" data-join-next="2">التالي</button></div>
+          </section>
+
+          <section class="flow-screen" data-join-step="2" tabindex="-1">
+            <div class="kicker">الخطوة 2 من 4</div><h2>الخدمات والتغطية</h2>
+            <div class="form-field"><label class="required" for="coverageCities">مدن أو مناطق التغطية</label><select id="coverageCities" multiple size="6" required></select><span class="field-hint">استخدم Ctrl أو Command لاختيار أكثر من مدينة.</span></div>
+            <div id="workshopAdaptive" class="mt-16" hidden>
+              <div class="form-grid two"><div class="form-field"><label class="required" for="mainSpecialty">التخصص الرئيسي</label><select id="mainSpecialty"><option value="">اختر</option><option>فحص وتشخيص عام</option><option>ميكانيكا وكهرباء محرك</option><option>كهرباء سيارات</option><option>تكييف سيارات</option><option>عفشة وتعليق وتوجيه</option><option>فرامل</option><option>ناقل حركة</option></select></div><div class="form-field"><label for="subSpecialties">تخصصات إضافية</label><input id="subSpecialties" maxlength="250" placeholder="افصل بينها بفاصلة"></div></div>
+            </div>
+            <div id="partsAdaptive" class="mt-16" hidden><div class="info-panel"><strong>لا نطلب مخزون القطع</strong><p>يكفي تحديد الشركات التي يخدمها المحل. توفر القطعة يتأكد منه العميل مباشرة.</p></div></div>
+            <div id="towAdaptive" class="mt-16" hidden><div class="form-field"><label class="required" for="towVehicleTypes">أنواع المركبات الممكن نقلها</label><input id="towVehicleTypes" maxlength="250" placeholder="سيارات ركوب، دفع رباعي..."> </div></div>
+            <div id="maintenanceAdaptive" class="mt-16" hidden><div class="form-field"><label class="required" for="maintenanceServicesJoin">خدمات الصيانة</label><select id="maintenanceServicesJoin" multiple size="6"></select></div></div>
+            <div id="makesAdaptive" class="mt-16"><div class="form-field"><label class="required" for="servedMakes">الشركات المصنعة التي تخدمها</label><select id="servedMakes" multiple size="8"></select><span class="field-hint">حدد الشركات الفعلية فقط.</span></div></div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-join-back="1">السابق</button><button class="btn btn-primary" type="button" data-join-next="3">التالي</button></div>
+          </section>
+
+          <section class="flow-screen" data-join-step="3" tabindex="-1">
+            <div class="kicker">الخطوة 3 من 4</div><h2>الخصم الاختياري</h2>
+            <p>لا يظهر الخصم للعملاء إلا إذا كانت النسبة والخدمات والشروط والمدة واضحة.</p>
+            <label class="checkbox-line"><input id="offersDiscount" type="checkbox"><span>أرغب بتقديم خصم لعملاء وين أوديها</span></label>
+            <div id="discountJoinFields" class="form-grid two mt-16" hidden>
+              <div class="form-field"><label class="required" for="joinDiscountPercent">نسبة الخصم %</label><input id="joinDiscountPercent" type="number" min="1" max="50"></div>
+              <div class="form-field"><label class="required" for="joinDiscountServices">الخدمات المشمولة</label><input id="joinDiscountServices" maxlength="180"></div>
+              <div class="form-field"><label class="required" for="joinDiscountConditions">الشروط والاستثناءات</label><textarea id="joinDiscountConditions" maxlength="500"></textarea></div>
+              <div class="form-grid two"><div class="form-field"><label class="required" for="joinDiscountStart">يبدأ</label><input id="joinDiscountStart" type="date"></div><div class="form-field"><label class="required" for="joinDiscountEnd">ينتهي</label><input id="joinDiscountEnd" type="date"></div></div>
+            </div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-join-back="2">السابق</button><button class="btn btn-primary" type="button" data-join-next="4">التالي</button></div>
+          </section>
+
+          <section class="flow-screen" data-join-step="4" tabindex="-1">
+            <div class="kicker">الخطوة 4 من 4</div><h2>الموافقات وإرسال الطلب</h2>
+            <div id="joinReview" class="guidance-grid"></div>
+            <div class="checkbox-stack mt-24">
+              <label class="checkbox-line"><input id="agreementAccepted" type="checkbox" required><span>أوافق على اتفاقية الشراكة، ومنها استحقاق الرسم عند وصول العميل وبدء الاستقبال أو الفحص.</span></label>
+              <label class="checkbox-line"><input id="feesAccepted" type="checkbox" required><span>أوافق على الرسوم الثابتة والتسوية عند 100 ريال أو نهاية الشهر.</span></label>
+              <label class="checkbox-line"><input id="ratingsAccepted" type="checkbox" required><span>أوافق على التقييمات الموثقة وسياسة الاعتراضات دون حذف مباشر.</span></label>
+              <label class="checkbox-line"><input id="privacyTrustAccepted" type="checkbox" required><span>أوافق على سياسة الخصوصية والثقة وعدم استخدام بيانات العميل للتسويق دون موافقته.</span></label>
+            </div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-join-back="3">السابق</button><button class="btn btn-primary" type="submit">إرسال طلب الانضمام</button></div>
+          </section>
+        </form>
+
+        <section id="joinSuccess" class="flow-screen" tabindex="-1">
+          <div class="success-panel"><strong>تم إرسال طلب الانضمام</strong><p>احتفظ برقم الطلب والجوال لمتابعة الحالة.</p></div>
+          <div class="guidance-grid mt-16"><div class="guidance-item"><span>رقم طلب الانضمام</span><strong id="joinApplicationNumber"></strong></div><div class="guidance-item"><span>الحالة</span><strong>تم الاستلام — مراجعة تجريبية</strong></div></div>
+          <div class="screen-actions"><a id="joinStatusLink" class="btn btn-primary" href="join-status.html">متابعة الطلب</a><a class="btn btn-light" href="index.html">الرئيسية</a></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script defer src="assets/config.js"></script>
+  <script defer src="assets/automotive-data.js"></script>
+  <script defer src="assets/storage.js"></script>
+  <script defer src="assets/seed.js"></script>
+  <script defer src="assets/lifecycle.js"></script>
+  <script defer src="assets/common.js"></script>
+  <script defer src="assets/join.js"></script>
+</body>
+</html>

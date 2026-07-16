@@ -1,0 +1,54 @@
+== JavaScript syntax ==
+PASS assets/ai-engine.js
+PASS assets/automotive-data.js
+PASS assets/common.js
+PASS assets/config.js
+PASS assets/customer.js
+PASS assets/dashboard.js
+PASS assets/join-status.js
+PASS assets/join.js
+PASS assets/lifecycle.js
+PASS assets/matching-engine.js
+PASS assets/payment.js
+PASS assets/receipt.js
+PASS assets/seed.js
+PASS assets/storage.js
+PASS assets/track.js
+PASS assets/workshop-login.js
+== Unit/integration ==
+✓ إنشاء جميع مفاتيح localStorage المطلوبة
+✓ Seed غير هدّام وموسوم بوضوح كتجريبي
+✓ اكتشاف الأعراض الخطرة دون طرح أسئلة أو طمأنة غير مناسبة
+✓ التوجيه الاحتمالي والأسئلة من صفر إلى ثلاثة غالبًا
+✓ عدم اختلاق مشكلة متوقعة عند نقص المعلومات
+✓ إنشاء publicToken عشوائي دون رقم الجوال
+✓ مطابقة تعتمد على المدينة والتغطية دون تعديل بيانات الشريك
+✓ إنشاء الطلب والإحالة قبل عرض الشريك
+✓ نجاح المطابقة للمسارات الأربعة من بيانات Seed
+✓ إظهار حالة واضحة عند عدم وجود تطابق دون اختلاق شريك
+✓ حفظ المسودة واستعادتها بعد إعادة التحميل
+✓ عدم استحقاق الرسم عند الوصول وحده
+✓ استحقاق رسم واحد فقط بعد الوصول وبدء الاستقبال أو الفحص
+✓ ثلاث إحالات بحد أقصى مع استبعاد الشركاء السابقين
+✓ منع التقييم قبل تجربة فعلية مؤكدة
+✓ تقييم موثق وتعقيم المحتوى المدخل
+✓ تعليق الرسم المتنازع عليه عند الاعتراض
+✓ إصدار مطالبة عند بلوغ 100 ريال
+✓ تسجيل دفع وإيصال تجريبي وإغلاق المطالبة
+✓ إصدار مطالبة شهرية حتى لو كان الرصيد أقل من 100 ريال
+✓ تعليق الشريك المتأخر عن السداد واستبعاده من المطابقة
+✓ إعادة تفعيل الشريك بعد تسوية المطالبة
+✓ الإغلاق الإداري بعد خمسة أيام دون حذف السجل
+✓ سلامة العلاقات المرجعية بين الجداول
+
+ALL_UNIT_QA_PASSED
+== Static audit ==
+{
+  "metrics": {
+    "html_files": 12,
+    "links": 54,
+    "scripts": 83,
+    "controls": 68
+  },
+  "issues": []
+}
