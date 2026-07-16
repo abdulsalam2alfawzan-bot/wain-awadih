@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0b1d33">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+  <title>حالة طلب الانضمام — وين أوديها؟</title><link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="join-status"><div data-site-header></div>
+<main id="main-content" class="section"><div class="container">
+  <section id="joinLookup" class="card"><div class="section-head"><div class="kicker">متابعة طلب الشراكة</div><h1>حالة طلب الانضمام</h1><p>استخدم الرابط الخاص أو رقم الطلب والجوال.</p></div><form id="joinLookupForm" class="form-grid two"><div class="form-field"><label class="required" for="joinNumber">رقم الطلب</label><input id="joinNumber" placeholder="JOIN-12345" required></div><div class="form-field"><label class="required" for="joinPhone">رقم الجوال</label><input id="joinPhone" inputmode="tel" maxlength="10" required></div><button class="btn btn-primary" type="submit">عرض الحالة</button></form></section>
+  <section id="joinResult" class="card" hidden><div class="kicker">طلب الشراكة</div><div id="joinResultContent"></div><div class="button-row mt-16"><a class="btn btn-light" href="join-status.html">بحث آخر</a><a class="btn btn-primary" href="index.html">الرئيسية</a></div></section>
+  <section id="joinNotFound" class="empty-state" hidden><h1>لم يتم العثور على الطلب</h1><p>تحقق من البيانات أو الرابط.</p><a class="btn btn-primary" href="join-status.html">المحاولة مرة أخرى</a></section>
+</div></main><div data-site-footer></div>
+<script defer src="assets/config.js"></script><script defer src="assets/automotive-data.js"></script><script defer src="assets/storage.js"></script><script defer src="assets/seed.js"></script><script defer src="assets/lifecycle.js"></script><script defer src="assets/common.js"></script><script defer src="assets/join-status.js"></script>
+</body></html>

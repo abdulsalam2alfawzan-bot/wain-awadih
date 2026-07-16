@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1d33">
+  <meta name="description" content="ابدأ طلبك في منصة وين أوديها دون حساب أو كلمة مرور.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+  <title>ابدأ طلبك — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="customer">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى JavaScript لتشغيل الرحلة والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+  <main id="main-content" class="flow-shell">
+    <div class="container flow-layout">
+      <aside class="flow-sidebar" aria-label="تقدم الطلب">
+        <div class="kicker">رحلة مبسطة ومترابطة</div>
+        <h1>طلب جديد</h1>
+        <p id="flowServiceLabel">اختر الخدمة، وسنحفظ تقدمك تلقائيًا على هذا الجهاز.</p>
+        <div class="progress-wrap"><div class="progress-meta"><span id="progressLabel">اختيار الخدمة</span><span id="progressPercent">0%</span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressBar" class="progress-bar"></div></div></div>
+        <div class="legal-note mt-24">لا نعرض تشخيصًا نهائيًا أو سعرًا تقديريًا، ولا نظهر بيانات الشريك قبل إنشاء الطلب والإحالة.</div>
+      </aside>
+
+      <div class="flow-content" aria-live="polite">
+        <section class="flow-screen active" data-screen="service" tabindex="-1">
+          <div class="kicker">الخطوة الأولى</div><h2>وش تحتاج لسيارتك؟</h2><p>المشكلة هي المسار الرئيسي. الخدمات الأخرى منفصلة وأقصر.</p>
+          <div class="service-choice-grid" id="serviceChoices">
+            <button class="service-choice primary" type="button" data-service="problem"><strong>عندي مشكلة في السيارة</strong><span>صف المشكلة ثم أجب عن أربعة أسئلة لتحديد التوقع والتخصص والاستعجال.</span></button>
+            <button class="service-choice" type="button" data-service="parts"><strong>أبحث عن محل قطع غيار</strong><span>رقم الهيكل الموصى به، اسم القطعة، ووكالة أو تجارية.</span></button>
+            <button class="service-choice urgent-choice" type="button" data-service="tow"><strong>أحتاج سطحة — عاجل</strong><span>الموقع التلقائي ووصف مكان السيارة إلزاميان.</span></button>
+            <button class="service-choice" type="button" data-service="maintenance"><strong>أبحث عن صيانة دورية</strong><span>اختر الصيانة ونوع الوقود والمنطقة والمدينة.</span></button>
+          </div>
+          <div class="screen-actions"><a class="btn btn-ghost" href="index.html">إلغاء</a><button id="serviceNext" class="btn btn-primary" type="button" disabled>التالي</button></div>
+        </section>
+
+        <section class="flow-screen" data-screen="customer" tabindex="-1">
+          <div class="kicker">بيانات التواصل</div><h2>بيانات بسيطة دون حساب</h2><p>نستخدمها لتشغيل الطلب وإرسال رابط المتابعة.</p>
+          <form id="customerForm" novalidate>
+            <div class="form-grid two"><div class="form-field"><label class="required" for="firstName">الاسم الأول</label><input id="firstName" autocomplete="given-name" maxlength="40" required><span class="field-error" data-error-for="firstName"></span></div><div class="form-field"><label class="required" for="phone">رقم الجوال</label><input id="phone" inputmode="tel" autocomplete="tel" placeholder="05XXXXXXXX" maxlength="10" required><span class="field-error" data-error-for="phone"></span></div></div>
+            <div class="checkbox-stack mt-24"><label class="checkbox-line"><input id="privacyAccepted" type="checkbox" required><span>أوافق على <a href="privacy.html" target="_blank" rel="noopener">سياسة الخصوصية</a> واستخدام البيانات لتشغيل الطلب.</span></label><label class="checkbox-line"><input id="termsAccepted" type="checkbox" required><span>أوافق على <a href="terms.html" target="_blank" rel="noopener">الشروط وحدود مسؤولية المنصة</a>.</span></label><label class="checkbox-line"><input id="marketingMessages" type="checkbox"><span>أوافق اختياريًا على الرسائل التسويقية. رسائل الطلب التشغيلية لا تتوقف.</span></label></div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="service">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+          </form>
+        </section>
+
+        <section class="flow-screen" data-screen="vehicle" tabindex="-1">
+          <div class="kicker">بيانات السيارة</div><h2>اختر الشركة ثم الموديل</h2><p>الموديلات تتغير حسب الشركة المختارة.</p>
+          <form id="vehicleForm" novalidate>
+            <div class="form-grid two">
+              <div class="form-field"><label class="required" for="make">الشركة المصنعة</label><select id="make" required></select><span class="field-error" data-error-for="make"></span></div>
+              <div class="form-field" id="makeOtherField" hidden><label class="required" for="makeOther">اسم الشركة</label><input id="makeOther" maxlength="60"><span class="field-error" data-error-for="makeOther"></span></div>
+              <div class="form-field"><label class="required" for="model">الموديل</label><select id="model" required disabled><option value="">اختر الشركة أولًا</option></select><span class="field-error" data-error-for="model"></span></div>
+              <div class="form-field" id="modelOtherField" hidden><label class="required" for="modelOther">اسم الموديل</label><input id="modelOther" maxlength="60"><span class="field-error" data-error-for="modelOther"></span></div>
+              <div class="form-field"><label id="yearLabel" class="required" for="year">سنة الصنع</label><select id="year"></select><span class="field-error" data-error-for="year"></span></div>
+              <div class="form-field" id="mileageField"><label class="required" for="mileage">ممشى السيارة</label><select id="mileage"></select><span class="field-error" data-error-for="mileage"></span></div>
+              <div class="form-field" id="fuelField" hidden><label class="required" for="fuelType">نوع الوقود</label><select id="fuelType"></select><span class="field-error" data-error-for="fuelType"></span></div>
+            </div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="customer">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+          </form>
+        </section>
+
+        <section class="flow-screen" data-screen="location" tabindex="-1">
+          <div class="kicker">المنطقة والموقع</div><h2>ابدأ بالمنطقة ثم المدينة</h2><p id="locationHelp">الموقع الدقيق اختياري إلا لخدمة السطحة.</p>
+          <form id="locationForm" novalidate>
+            <div class="form-grid two"><div class="form-field"><label class="required" for="region">المنطقة</label><select id="region" required></select><span class="field-error" data-error-for="region"></span></div><div class="form-field"><label class="required" for="city">المدينة</label><select id="city" required disabled><option value="">اختر المنطقة أولًا</option></select><span class="field-error" data-error-for="city"></span></div></div>
+            <div class="location-capture mt-16"><button id="detectLocation" class="btn btn-light" type="button">تحديد موقعي تلقائيًا</button><div id="locationStatus" class="field-hint" role="status">لم تتم مشاركة الموقع.</div></div>
+            <div class="form-field mt-16"><label id="preciseLocationLabel" for="preciseLocation">الموقع الدقيق أو نقطة الالتقاء</label><input id="preciseLocation" maxlength="400" placeholder="مثال: حي الريان، قرب محطة كذا"><span class="field-hint" id="preciseLocationHint">يمكن كتابة الموقع يدويًا، لكن السطحة تتطلب أيضًا مشاركة الإحداثيات.</span><span class="field-error" data-error-for="preciseLocation"></span></div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="vehicle">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+          </form>
+        </section>
+
+        <section class="flow-screen" data-screen="path" tabindex="-1">
+          <div class="kicker">تفاصيل الطلب</div><h2 id="pathTitle">وش المشكلة في سيارتك؟</h2><p id="pathDescription">اكتب وصفك بطريقتك.</p>
+          <form id="pathForm" novalidate>
+            <div id="problemFields"><div class="form-field"><label class="required" for="problem">وصف المشكلة</label><textarea id="problem" maxlength="1200" placeholder="مثال: السيارة ترج إذا وقفت عند الإشارة وتظهر لمبة المكينة"></textarea><span class="field-hint">اكتب متى تظهر المشكلة وأي لمبة أو صوت لاحظته.</span><span class="field-error" data-error-for="problem"></span></div></div>
+            <div id="partsFields" hidden>
+              <div class="form-field"><label for="vin">رقم الهيكل — يفضل كتابته</label><input id="vin" maxlength="40" autocomplete="off" placeholder="VIN / رقم الهيكل"><span class="field-hint">يساعد المحل على التحقق بصورة أدق من مطابقة القطعة.</span></div>
+              <div class="form-field mt-16"><label class="required" for="partName">اسم القطعة المطلوبة بدقة</label><input id="partName" maxlength="200" placeholder="مثال: كمبروسر مكيف أو مساعد أمامي يمين"><span class="field-error" data-error-for="partName"></span></div>
+              <div class="form-field mt-16"><label class="required" for="partType">نوع القطعة المفضل</label><select id="partType"></select><span class="field-error" data-error-for="partType"></span></div>
+            </div>
+            <div id="towFields" hidden>
+              <div class="urgent-panel"><strong>طلب سطحة عاجل</strong><p>موقع السيارة التلقائي ووصف المكان مطلوبان قبل الإحالة.</p></div>
+              <div class="form-grid two"><div class="form-field"><label class="required" for="vehicleMoves">هل السيارة تتحرك؟</label><select id="vehicleMoves"></select><span class="field-error" data-error-for="vehicleMoves"></span></div><div class="form-field"><label for="towDestination">الوجهة إن كانت معروفة</label><input id="towDestination" maxlength="300" placeholder="مثال: ورشة في حي كذا"></div></div>
+              <div class="form-field mt-16"><label class="required" for="placeDescription">وصف مكان السيارة</label><textarea id="placeDescription" maxlength="500" placeholder="مثال: طريق الملك عبدالعزيز، بجوار المحطة، السيارة على الجهة اليمنى"></textarea><span class="field-error" data-error-for="placeDescription"></span></div>
+              <div class="form-field mt-16"><label for="towNotes">وصف مختصر للحالة</label><textarea id="towNotes" maxlength="500" placeholder="مثال: السيارة لا تشتغل والإطار الأمامي متضرر"></textarea></div>
+            </div>
+            <div id="maintenanceFields" hidden><div class="form-field"><label class="required" for="maintenanceService">الخدمة المطلوبة</label><select id="maintenanceService"></select><span class="field-error" data-error-for="maintenanceService"></span></div><div class="form-field mt-16"><label for="maintenanceNotes">ملاحظة اختيارية</label><textarea id="maintenanceNotes" maxlength="500"></textarea></div></div>
+            <div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="location">السابق</button><button id="pathSubmit" class="btn btn-primary" type="submit">متابعة</button></div>
+          </form>
+        </section>
+
+        <section class="flow-screen" data-screen="analyzing" tabindex="-1"><div class="loading-shell"><div class="skeleton-icon"></div><h2>نفهم وصف المشكلة مبدئيًا</h2><p>نحلل الوصف وفق قواعد واضحة، والنتيجة توجيه مبدئي وليست تشخيصًا نهائيًا.</p><div id="analysisSteps" class="loader-steps"><div class="loader-step">تنظيف الوصف وفهم الكلمات</div><div class="loader-step">تحديد السيناريو المحتمل</div><div class="loader-step">إعداد أربعة أسئلة مناسبة</div></div></div></section>
+
+        <section class="flow-screen" data-screen="questions" tabindex="-1"><div class="kicker" id="questionTitle">سؤال 1 من 4</div><h2 id="questionText"></h2><p>اختر الإجابة الأقرب. لا تقلق إن لم تكن متأكدًا.</p><div id="answerChoices" class="choice-row"></div><div class="screen-actions"><button id="questionBack" class="btn btn-ghost" type="button">السابق</button><button id="questionNext" class="btn btn-primary" type="button" disabled>التالي</button></div></section>
+
+        <section class="flow-screen" data-screen="guidance" tabindex="-1"><div class="kicker">فهمنا مشكلتك مبدئيًا</div><h2>التوجيه الفني الأولي</h2><div id="dangerPanel" class="danger-panel" hidden></div><div class="guidance-grid"><div class="guidance-item"><span>المشكلة المتوقعة مبدئيًا</span><strong id="expectedIssue"></strong></div><div class="guidance-item"><span>التخصص المناسب</span><strong id="specialty"></strong></div><div class="guidance-item"><span>درجة الاستعجال</span><strong id="urgency"></strong></div><div class="guidance-item"><span>ما يجب فعله الآن</span><strong id="nextStep"></strong></div></div><div id="legalNotice" class="legal-note mt-16"></div><div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="path">تعديل الوصف</button><button id="findPartner" class="btn btn-primary" type="button">وين أوديها؟</button></div></section>
+
+        <section class="flow-screen" data-screen="review" tabindex="-1"><div class="kicker">مراجعة سريعة</div><h2>راجع الطلب قبل المطابقة</h2><div id="reviewContent" class="guidance-grid"></div><div id="serviceDisclaimer" class="legal-note mt-16"></div><div class="screen-actions"><button class="btn btn-ghost" type="button" data-back="path">تعديل</button><button id="reviewMatch" class="btn btn-primary" type="button">ابحث عن شريك</button></div></section>
+
+        <section class="flow-screen" data-screen="matching" tabindex="-1"><div class="loading-shell"><div class="skeleton-icon"></div><h2>نسجل الطلب ثم نختار شريكًا واحدًا</h2><div class="loader-steps"><div class="loader-step">حفظ العميل والسيارة والطلب</div><div class="loader-step">فحص بيانات الشركاء والتغطية</div><div class="loader-step">تسجيل الإحالة قبل عرض الشريك</div></div></div></section>
+
+        <section class="flow-screen" data-screen="result" tabindex="-1"><div id="resultHeader" class="success-panel"></div><div id="partnerResult"></div><section class="contact-card mt-16" aria-labelledby="contactPartnerTitle"><div><div class="kicker">خطوتك التالية</div><h2 id="contactPartnerTitle">تواصل مع الشريك</h2><p>رسالة الطلب جاهزة، ويمكنك نسخها أو فتح واتساب مباشرة.</p></div><div class="button-row contact-actions"><a id="whatsappLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">التواصل عبر واتساب</a><button id="copyWhatsapp" class="btn btn-light" type="button">نسخ الرسالة</button></div></section><section class="private-link-card mt-24"><div><span class="pill">احتفظ به</span><h2>رابط طلبك الخاص</h2><p>للعودة والمتابعة دون كلمة مرور.</p></div><div class="compact-link-row"><input id="privateLink" aria-label="رابط الطلب الخاص" readonly><button id="copyPrivateLink" class="icon-action" type="button" aria-label="نسخ رابط الطلب">نسخ</button><a id="openTrackLink" class="icon-action" href="track.html" aria-label="فتح متابعة الطلب">فتح</a><a id="requestAlternativeLink" class="icon-action alternative-action" href="track.html" aria-label="طلب شريك آخر">↻ <span>أريد ورشة أخرى</span></a></div></section></section>
+
+        <section class="flow-screen" data-screen="noMatch" tabindex="-1"><div class="empty-state"><h2>لا يوجد تطابق حاليًا</h2><p id="noMatchReason"></p><p>يمكنك تعديل الموقع أو المحاولة لاحقًا عند انضمام شريك مناسب.</p><div class="screen-actions"><button class="btn btn-light" type="button" data-back="location">تعديل الموقع</button><a class="btn btn-primary" href="index.html">الرئيسية</a></div></div></section>
+      </div>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script defer src="assets/config.js"></script><script defer src="assets/automotive-data.js"></script><script defer src="assets/storage.js"></script><script defer src="assets/seed.js"></script><script defer src="assets/ai-engine.js"></script><script defer src="assets/matching-engine.js"></script><script defer src="assets/lifecycle.js"></script><script defer src="assets/common.js"></script><script defer src="assets/customer.js"></script>
+</body>
+</html>
