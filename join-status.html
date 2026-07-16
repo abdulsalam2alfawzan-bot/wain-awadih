@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1729">
+  <meta name="description" content="تابع حالة طلب انضمام ورشتك إلى شبكة وين أوديها.">
+  <title>حالة انضمام الورشة — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="join">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى تفعيل JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+
+  <section class="page-banner">
+    <div class="container">
+      <div><h1>متابعة طلب انضمام الورشة</h1><p>أدخل رقم الطلب ورقم التواصل لمراجعة حالة الانضمام.</p></div>
+      <div class="page-banner-icon" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+    </div>
+  </section>
+
+  <main class="page narrow">
+    <div class="container">
+      <form class="form-card" id="joinStatusForm" novalidate>
+        <div class="flow-title"><div class="step">استرجاع طلب الانضمام</div><h2>بيانات المتابعة</h2><p>رقم طلب الانضمام يبدأ عادة بـ JOIN.</p></div>
+        <div class="form-grid">
+          <div class="field" data-field="statusId"><label for="statusId">رقم طلب الانضمام</label><input id="statusId" dir="ltr" placeholder="JOIN-12345"><div class="error">أدخل رقم الطلب.</div></div>
+          <div class="field" data-field="statusPhone"><label for="statusPhone">رقم التواصل</label><input id="statusPhone" type="tel" inputmode="numeric" maxlength="10" dir="ltr" placeholder="05XXXXXXXX"><div class="error">أدخل رقم التواصل الصحيح.</div></div>
+        </div>
+        <div class="inline-actions mt-16">
+          <button class="btn btn-dark" id="searchJoinStatus" type="submit">عرض الحالة</button>
+          <a class="btn btn-light" href="join.html">تقديم طلب جديد</a>
+        </div>
+      </form>
+
+      <section class="hidden mt-20" id="joinStatusResult">
+        <div class="dashboard-head">
+          <div><h1 id="statusWorkshopName">—</h1><p id="statusMeta">—</p></div>
+          <span class="badge warning" id="statusBadge">قيد المراجعة</span>
+        </div>
+        <div class="cards-3" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <h3>مراحل الطلب</h3>
+            <div class="timeline mt-16" id="joinTimeline"></div>
+          </div>
+          <div class="card">
+            <h3>ملخص البيانات</h3>
+            <div class="info-list mt-16" id="joinStatusSummary"></div>
+          </div>
+        </div>
+        <div class="notice info mt-16" id="joinReviewNote">—</div>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="assets/common.js"></script>
+  <script src="assets/join-status.js"></script>
+</body>
+</html>

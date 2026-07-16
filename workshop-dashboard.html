@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1729">
+  <meta name="description" content="لوحة الورشة لإدارة الإحالات والتقييمات والرسوم والمدفوعات التجريبية.">
+  <title>لوحة الورشة — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="workshop-dashboard">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى تفعيل JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+
+  <main class="page">
+    <div class="container portal-grid">
+      <aside class="sidebar">
+        <div class="sidebar-title">
+          <strong id="sidebarWorkshopName">مركز نبض المحرك</strong>
+          <small>شريك نشط</small>
+        </div>
+        <nav class="sidebar-nav" aria-label="لوحة الورشة">
+          <button class="active" type="button" data-tab="overview">نظرة عامة</button>
+          <button type="button" data-tab="referrals">الإحالات</button>
+          <button type="button" data-tab="ratings">التقييمات</button>
+          <button type="button" data-tab="statement">كشف الحساب</button>
+          <a href="payment.html">دفع الرسوم</a>
+          <button class="danger-link" id="logoutWorkshop" type="button">تسجيل الخروج</button>
+        </nav>
+      </aside>
+
+      <div class="portal-main">
+        <section class="portal-panel active" data-panel="overview">
+          <div class="dashboard-head">
+            <div>
+              <h1>مرحبًا، <span id="ownerName">محمد السالم</span></h1>
+              <p>متابعة تشغيل الورشة والإحالات والرصيد من مكان واحد.</p>
+            </div>
+            <a class="btn btn-primary" href="payment.html">دفع الرصيد المستحق</a>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">إجمالي الإحالات</div><div class="stat-value" id="statReferrals">0</div><div class="stat-meta">الإحالات المسجلة للعرض</div></div>
+            <div class="stat-card"><div class="stat-label">تمت الخدمة</div><div class="stat-value" id="statCompleted">0</div><div class="stat-meta">حالات مؤكدة</div></div>
+            <div class="stat-card"><div class="stat-label">التقييم العام</div><div class="stat-value"><span class="stars">★</span> <span id="statRating">4.8</span></div><div class="stat-meta">من تقييمات موثقة</div></div>
+            <div class="stat-card highlight"><div class="stat-label">الرصيد المستحق</div><div class="stat-value" id="statBalance">0 ر.س</div><div class="stat-meta">حد المطالبة: 100 ر.س</div></div>
+          </div>
+
+          <div class="cards-3">
+            <div class="card">
+              <h3>مؤشر الالتزام</h3>
+              <div class="stat-value mt-12" id="commitmentValue">94%</div>
+              <div class="progress-track mt-12"><div class="progress-bar" id="commitmentBar" style="width:94%"></div></div>
+              <p class="mt-12">يعكس تحديث الحالات والتعامل والمتابعة.</p>
+            </div>
+            <div class="card">
+              <h3>مؤشر الثقة الداخلي</h3>
+              <div class="stat-value mt-12" id="trustValue">92%</div>
+              <div class="progress-track mt-12"><div class="progress-bar" id="trustBar" style="width:92%"></div></div>
+              <p class="mt-12">مؤشر داخلي لا يظهر للعميل.</p>
+            </div>
+            <div class="card">
+              <h3>عدالة الأسعار</h3>
+              <div class="stat-value mt-12"><span class="stars">★</span> <span id="fairnessValue">4.6</span></div>
+              <p class="mt-12">رأي العملاء في عدالة السعر مقارنة بالخدمة والتجربة، وليس حكمًا بأن الورشة الأرخص.</p>
+            </div>
+          </div>
+
+          <div class="card mt-20">
+            <div class="dashboard-head">
+              <div><h3 class="mt-0">أحدث الإحالات</h3><p>حدّث الحالة بدقة حتى تكون المتابعة واضحة.</p></div>
+              <button class="btn btn-light btn-sm" type="button" data-switch-tab="referrals">عرض جميع الإحالات</button>
+            </div>
+            <div class="table-wrap"><table><thead><tr><th>الطلب</th><th>العميل والسيارة</th><th>الخدمة</th><th>الحالة</th><th>آخر تحديث</th></tr></thead><tbody id="latestReferralsBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="portal-panel" data-panel="referrals">
+          <div class="dashboard-head">
+            <div><h1>إدارة الإحالات</h1><p>كل إحالة مرتبطة بطلب وورشة وحالة مستقلة.</p></div>
+            <div class="inline-actions">
+              <label class="sr-only" for="referralFilter">تصفية الإحالات حسب الحالة</label><select id="referralFilter" style="width:auto"><option value="">كل الحالات</option></select>
+              <button class="btn btn-light btn-sm" id="resetReferralDemo" type="button">إعادة البيانات التجريبية</button>
+            </div>
+          </div>
+          <div class="notice info mb-12">عند تحديث الحالة إلى «تمت الخدمة» تتم محاكاة تسجيل رسم ثابت وفق الاتفاقية. القيمة المالية تجريبية للعرض فقط ولا تمثل سياسة معتمدة.</div>
+          <div class="table-wrap"><table><thead><tr><th>الإحالة</th><th>الطلب</th><th>العميل</th><th>السيارة والخدمة</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody id="referralsBody"></tbody></table></div>
+        </section>
+
+        <section class="portal-panel" data-panel="ratings">
+          <div class="dashboard-head">
+            <div><h1>التقييمات الموثقة</h1><p>كل تقييم مرتبط بإحالة وتجربة أكد العميل حدوثها.</p></div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">متوسط التقييم العام</div><div class="stat-value" id="ratingOverall">—</div></div>
+            <div class="stat-card"><div class="stat-label">جودة التعامل</div><div class="stat-value" id="ratingTreatment">—</div></div>
+            <div class="stat-card"><div class="stat-label">الالتزام</div><div class="stat-value" id="ratingCommitment">—</div></div>
+            <div class="stat-card"><div class="stat-label">عدالة الأسعار</div><div class="stat-value" id="ratingFairness">—</div></div>
+          </div>
+          <div id="ratingsList" class="form-grid one"></div>
+        </section>
+
+        <section class="portal-panel" data-panel="statement">
+          <div class="dashboard-head">
+            <div><h1>كشف الحساب</h1><p>الإحالات والرسوم المسجلة والمدفوعات والرصيد الحالي.</p></div>
+            <a class="btn btn-primary" href="payment.html">دفع الرسوم</a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">إجمالي الرسوم</div><div class="stat-value" id="feesTotal">—</div></div>
+            <div class="stat-card"><div class="stat-label">المدفوع</div><div class="stat-value" id="feesPaid">—</div></div>
+            <div class="stat-card highlight"><div class="stat-label">الرصيد الحالي</div><div class="stat-value" id="feesOutstanding">—</div></div>
+            <div class="stat-card"><div class="stat-label">آخر سداد</div><div class="stat-value" id="lastPayment" style="font-size:14px">—</div></div>
+          </div>
+          <div class="notice warning mb-12" id="balanceNotice"></div>
+          <div class="table-wrap"><table><thead><tr><th>رقم الرسم</th><th>الإحالة والطلب</th><th>الحدث المستحق</th><th>القيمة التجريبية</th><th>الحالة</th><th>التاريخ</th></tr></thead><tbody id="feesBody"></tbody></table></div>
+          <h3 class="mt-20">سجل المدفوعات</h3>
+          <div class="table-wrap"><table><thead><tr><th>رقم الدفع</th><th>القيمة</th><th>الطريقة</th><th>الحالة</th><th>التاريخ</th><th>الإيصال</th></tr></thead><tbody id="paymentsBody"></tbody></table></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="referralModal" role="dialog" aria-modal="true" aria-labelledby="referralModalTitle">
+    <div class="modal-head">
+      <div><h3 id="referralModalTitle">تحديث الإحالة</h3><p>اختر الحالة الجديدة وسجّلها في النموذج.</p></div>
+      <button class="modal-close" type="button" data-close-modal>×</button>
+    </div>
+    <div id="referralModalContent"></div>
+  </div>
+
+  <div data-site-footer></div>
+  <script src="assets/common.js"></script>
+  <script src="assets/dashboard.js"></script>
+</body>
+</html>

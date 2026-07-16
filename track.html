@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1729">
+  <meta name="description" content="متابعة طلب وين أوديها، التواصل مع الورشة، طلب ورشة بديلة، وتقييم التجربة الموثقة.">
+  <title>متابعة الطلب — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="track">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى تفعيل JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+
+  <section class="page-banner">
+    <div class="container">
+      <div>
+        <h1>طلبك محفوظ… كمل من هنا</h1>
+        <p>تابع الإحالة الحالية، افتح واتساب، أكد النتيجة، أو اطلب ورشة أخرى دون إعادة بياناتك.</p>
+      </div>
+      <div class="page-banner-icon" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <main class="page narrow" id="main-content">
+    <div class="container">
+      <form class="form-card" id="requestSearchForm" novalidate>
+        <div class="flow-title">
+          <div class="step">استرجاع آمن وبسيط</div>
+          <h2>أدخل رقم الطلب والجوال</h2>
+          <p>رقم الطلب ثابت حتى عند ترشيح ورشة ثانية أو ثالثة.</p>
+        </div>
+        <div class="form-grid">
+          <div class="field" data-field="trackId">
+            <label for="trackId">رقم الطلب</label>
+            <input id="trackId" dir="ltr" autocomplete="off" placeholder="WA-10425" aria-describedby="trackIdError">
+            <div class="error" id="trackIdError">أدخل رقم الطلب.</div>
+          </div>
+          <div class="field" data-field="trackPhone">
+            <label for="trackPhone">رقم الجوال</label>
+            <input id="trackPhone" type="tel" inputmode="numeric" maxlength="10" dir="ltr" autocomplete="tel" placeholder="05XXXXXXXX" aria-describedby="trackPhoneError">
+            <div class="error" id="trackPhoneError">أدخل رقم الجوال المرتبط بالطلب.</div>
+          </div>
+        </div>
+        <div class="inline-actions mt-16">
+          <button class="btn btn-dark" id="searchRequest" type="submit">عرض الطلب</button>
+          <button class="btn btn-light" id="loadDemoRequest" type="button">فتح الطلب التجريبي</button>
+        </div>
+      </form>
+
+      <section id="requestView" class="hidden mt-20" aria-live="polite">
+        <div class="dashboard-head">
+          <div><h1 id="trackRequestTitle">الطلب —</h1><p id="trackRequestMeta">—</p></div>
+          <span class="badge info" id="trackRequestStatus">—</span>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-label">نوع الطلب</div><div class="stat-value compact" id="trackType">—</div></div>
+          <div class="stat-card"><div class="stat-label">السيارة</div><div class="stat-value compact" id="trackVehicle">—</div></div>
+          <div class="stat-card"><div class="stat-label">المدينة</div><div class="stat-value compact" id="trackCity">—</div></div>
+          <div class="stat-card highlight"><div class="stat-label">عدد الإحالات</div><div class="stat-value" id="trackReferralCount">—</div><div class="stat-meta">الحد الأقصى 3</div></div>
+        </div>
+
+        <div class="card request-summary-card">
+          <div class="section-row">
+            <div><h3 class="mt-0">ملخص الطلب</h3><p>بياناتك محفوظة داخل الطلب نفسه.</p></div>
+            <button class="btn btn-light btn-sm" id="copyRequestId" type="button">نسخ رقم الطلب</button>
+          </div>
+          <div class="info-list" id="requestDetails"></div>
+        </div>
+
+        <div class="two-column-grid mt-20">
+          <div class="card">
+            <h3 class="mt-0">مسار الإحالة الحالية</h3>
+            <div class="timeline mt-16" id="requestTimeline"></div>
+          </div>
+          <div class="card referral-current-card">
+            <div class="section-row">
+              <h3 class="mt-0">الورشة الحالية</h3>
+              <span class="badge info">ورشة واحدة فقط</span>
+            </div>
+            <div id="currentReferralCard" class="mt-16"></div>
+          </div>
+        </div>
+
+        <div class="card mt-20">
+          <div class="section-row">
+            <div><h3 class="mt-0">ما نتيجة الإحالة الحالية؟</h3><p>اختر آخر نتيجة فعلية وصلت إليها.</p></div>
+          </div>
+          <div class="inline-actions confirmation-actions">
+            <button class="btn btn-light confirmation-btn" data-confirmation="لم أتواصل معها" type="button">لم أتواصل</button>
+            <button class="btn btn-light confirmation-btn" data-confirmation="تواصلت ولم أصل" type="button">تواصلت ولم أصل</button>
+            <button class="btn btn-primary confirmation-btn" data-confirmation="وصلت إلى الورشة" type="button">وصلت للورشة</button>
+            <button class="btn btn-success confirmation-btn" data-confirmation="تمت الخدمة" type="button">تمت الخدمة</button>
+          </div>
+          <div class="notice success mt-16 hidden" id="confirmationNotice" role="status"></div>
+          <div class="request-alternative mt-16" id="alternativeAction">
+            <div><strong>ما اتفقت مع الورشة؟</strong><span>اطلب بديلًا داخل نفس الطلب، وسنستبعد الورشة السابقة.</span></div>
+            <button class="btn btn-light" id="requestAlternative" type="button">أريد ورشة أخرى</button>
+          </div>
+        </div>
+
+        <div class="card mt-20">
+          <div class="section-row"><div><h3 class="mt-0">سجل الإحالات</h3><p>كل ورشة تظهر كسجل مستقل داخل رقم الطلب نفسه.</p></div></div>
+          <div class="referral-history" id="referralHistory"></div>
+        </div>
+
+        <div class="card mt-20 hidden" id="ratingSection">
+          <div class="flow-title">
+            <div class="step">تقييم موثق</div>
+            <h2>قيّم تجربتك مع الورشة</h2>
+            <p>يظهر التقييم بعد تأكيد إتمام الخدمة، ويرتبط بالإحالة الحالية فقط.</p>
+          </div>
+          <form id="ratingForm" novalidate>
+            <div class="rating-grid" id="ratingFields"></div>
+            <div class="form-grid mt-16">
+              <div class="field" data-field="recommendWorkshop">
+                <label for="recommendWorkshop">هل تنصح بالورشة؟</label>
+                <select id="recommendWorkshop"><option value="">اختر</option><option>نعم</option><option>لا</option></select>
+                <div class="error">اختر نعم أو لا.</div>
+              </div>
+              <div class="field">
+                <label for="ratingComment">تعليق اختياري</label>
+                <textarea id="ratingComment" maxlength="300" placeholder="شاركنا ملاحظتك باختصار"></textarea>
+              </div>
+            </div>
+            <button class="btn btn-dark mt-16" type="submit">إرسال التقييم الموثق</button>
+          </form>
+          <div class="notice success hidden" id="ratingSuccess" role="status"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="trackAnotherModal" role="dialog" aria-modal="true" aria-labelledby="trackAnotherTitle">
+    <div class="modal-head">
+      <div><h3 id="trackAnotherTitle">لماذا تريد ورشة أخرى؟</h3><p>السبب اختياري، ويساعد في تحسين المطابقة ومتابعة أداء الورش.</p></div>
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button>
+    </div>
+    <div class="form-grid one">
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="لم يتم الرد">لم يتم الرد</label>
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="لم نتفق على الموعد">لم نتفق على الموعد</label>
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="لم يتم التفاهم على السعر">لم يتم التفاهم على السعر</label>
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="الخدمة غير متوفرة">الخدمة غير متوفرة</label>
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="لم أرغب في الاستمرار مع الورشة">لم أرغب في الاستمرار مع الورشة</label>
+      <label class="check-card"><input type="radio" name="trackAnotherReason" value="سبب آخر">سبب آخر</label>
+    </div>
+    <button class="btn btn-dark btn-block mt-16" id="confirmTrackAlternative" type="button">ترشيح ورشة بديلة</button>
+  </div>
+
+  <div data-site-footer></div>
+  <script src="assets/common.js"></script>
+  <script src="assets/track.js"></script>
+</body>
+</html>

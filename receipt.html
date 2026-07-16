@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1729">
+  <meta name="description" content="إيصال الدفع التجريبي لرسوم منصة وين أوديها.">
+  <title>إيصال الدفع — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="receipt">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى تفعيل JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+
+  <main class="page">
+    <div class="container">
+      <article class="receipt" id="receiptCard">
+        <div class="receipt-head">
+          <div class="receipt-check">✓</div>
+          <h1>تمت محاكاة الدفع بنجاح</h1>
+          <p>إيصال تجريبي — لا توجد عملية مالية حقيقية.</p>
+        </div>
+        <div class="receipt-body">
+          <div class="receipt-grid">
+            <div class="receipt-item"><small>رقم الإيصال</small><strong id="receiptId" class="ltr">—</strong></div>
+            <div class="receipt-item"><small>رقم عملية الدفع</small><strong id="paymentId" class="ltr">—</strong></div>
+            <div class="receipt-item"><small>الورشة</small><strong id="receiptWorkshop">—</strong></div>
+            <div class="receipt-item"><small>المبلغ التجريبي</small><strong id="receiptAmount">—</strong></div>
+            <div class="receipt-item"><small>طريقة الدفع</small><strong id="receiptMethod">—</strong></div>
+            <div class="receipt-item"><small>تاريخ العملية</small><strong id="receiptDate">—</strong></div>
+            <div class="receipt-item"><small>آخر أربعة أرقام</small><strong id="receiptLast4" class="ltr">—</strong></div>
+            <div class="receipt-item"><small>حالة العملية</small><strong class="text-success">مكتمل — محاكاة</strong></div>
+          </div>
+          <div class="notice info mt-16" id="receiptFees">—</div>
+          <div class="inline-actions mt-20">
+            <a class="btn btn-dark" href="workshop-dashboard.html">العودة إلى لوحة الورشة</a>
+            <a class="btn btn-light" href="payment.html">صفحة الدفع</a>
+            <button class="btn btn-light" id="printReceipt" type="button">طباعة الإيصال</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="assets/common.js"></script>
+  <script src="assets/receipt.js"></script>
+</body>
+</html>

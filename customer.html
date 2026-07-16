@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1729">
+  <meta name="description" content="ابدأ طلب سيارتك عبر مسار الصيانة الدورية أو وصف المشكلة، ثم احصل على ترشيح ورشة واحدة مناسبة.">
+  <title>ابدأ طلبك — وين أوديها؟</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="customer">
+  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى تفعيل JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <div data-site-header></div>
+
+  <section class="page-banner">
+    <div class="container">
+      <div>
+        <h1>ابدأ طلب سيارتك</h1>
+        <p>اختر المسار المناسب، وأكمل البيانات، ثم تحصل على ورشة شريكة واحدة فقط.</p>
+      </div>
+      <div class="page-banner-icon" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 14.5 5.8 9A2.5 2.5 0 0 1 8.2 7.3h7.6A2.5 2.5 0 0 1 18.2 9l1.8 5.5"/><path d="M3 14.5h18v3.3a1.7 1.7 0 0 1-1.7 1.7H4.7A1.7 1.7 0 0 1 3 17.8z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <main class="page narrow">
+    <div class="container">
+      <div class="progress-shell" id="flowProgressShell">
+        <div class="progress-meta"><span id="flowStepText">بداية الطلب</span><span id="flowPercent">0%</span></div>
+        <div class="progress-track"><div class="progress-bar" id="flowProgressBar" style="width:0%"></div></div>
+      </div>
+
+      <section class="flow-screen active" data-screen="mode">
+        <div class="flow-title">
+          <div class="step">الخطوة الأولى</div>
+          <h1>وش تحتاج سيارتك؟</h1>
+          <p>اختر المسار الأقرب لاحتياجك. لا نخلط الصيانة الدورية مع تحليل الأعطال.</p>
+        </div>
+        <div class="choice-grid">
+          <button class="choice-card" type="button" data-mode="maintenance">
+            <span class="choice-check">✓</span>
+            <span class="choice-icon" aria-hidden="true">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 21h14M7 21V8l5-5 5 5v13"/><path d="M9 12h6M9 16h6"/></svg>
+            </span>
+            <h3>صيانة دورية</h3>
+            <p>اختر خدمة واضحة مثل الزيت أو الفلاتر أو البطارية، بدون تحليل ذكاء اصطناعي أو أسئلة تشخيصية.</p>
+          </button>
+
+          <button class="choice-card" type="button" data-mode="problem">
+            <span class="choice-check">✓</span>
+            <span class="choice-icon" aria-hidden="true">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2.8 20h18.4z"/><path d="M12 9v5M12 17h.01"/></svg>
+            </span>
+            <h3>مشكلة تواجهك</h3>
+            <p>صف المشكلة بطريقتك، ثم نحاكي فهمها مبدئيًا وطرح أسئلة مرتبطة بالحالة لتحديد التخصص.</p>
+          </button>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-light" href="index.html">العودة للرئيسية</a>
+          <button class="btn btn-primary" id="modeNext" type="button" disabled>متابعة</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="maintenance">
+        <div class="flow-title">
+          <div class="step">الصيانة الدورية</div>
+          <h2>اختر الخدمة المطلوبة</h2>
+          <p>اختيار مباشر وسريع. لا يوجد تحليل عطل أو تقدير سعر إصلاح.</p>
+        </div>
+        <div class="service-grid" id="maintenanceServices"></div>
+        <div class="field mt-16 hidden" id="otherServiceField">
+          <label for="otherService">اكتب الخدمة الأخرى</label>
+          <input id="otherService" type="text" maxlength="80" placeholder="مثال: فحص سوائل السيارة">
+          <div class="error">اكتب اسم الخدمة.</div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="mode">رجوع</button>
+          <button class="btn btn-primary" id="maintenanceNext" type="button" disabled>التالي</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="problem">
+        <div class="flow-title">
+          <div class="step">وصف المشكلة</div>
+          <h2>وش المشكلة في سيارتك؟</h2>
+          <p>اشرحها بطريقتك ولا تحتاج إلى معرفة المصطلحات الفنية. الإدخال نصي فقط.</p>
+        </div>
+        <div class="form-card">
+          <div class="field" data-field="problem">
+            <label for="problemText">وصف المشكلة</label>
+            <textarea id="problemText" maxlength="600" placeholder="مثال: السيارة ترج إذا وقفت عند الإشارة وأحيانًا تظهر لمبة المكينة."></textarea>
+            <div class="hint"><span id="problemCount">0</span> / 600 حرف</div>
+            <div class="error">اكتب وصفًا واضحًا من 12 حرفًا على الأقل.</div>
+          </div>
+          <div class="inline-actions mt-12">
+            <button class="btn btn-light btn-sm example-problem" type="button" data-text="السيارة ترج إذا وقفت عند الإشارة وأحيانًا تظهر لمبة المكينة.">رجفة عند الوقوف</button>
+            <button class="btn btn-light btn-sm example-problem" type="button" data-text="المكيف يبرد أثناء المشي ويضعف إذا وقفت السيارة.">المكيف يضعف</button>
+            <button class="btn btn-light btn-sm example-problem" type="button" data-text="أسمع صوت طقطقة من الأمام عند المطبات.">طقطقة عند المطبات</button>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="mode">رجوع</button>
+          <button class="btn btn-primary" id="problemNext" type="button">التالي</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="customer">
+        <div class="flow-title">
+          <div class="step">بيانات العميل</div>
+          <h2>خلّنا نعرفك</h2>
+          <p>الاسم الأول ورقم الجوال يكفيان في النموذج الأولي.</p>
+        </div>
+        <div class="form-card form-grid">
+          <div class="field" data-field="name">
+            <label for="customerName">الاسم الأول</label>
+            <input id="customerName" type="text" maxlength="30" autocomplete="given-name" placeholder="مثال: عبدالسلام">
+            <div class="error">اكتب الاسم الأول.</div>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="customerPhone">رقم الجوال</label>
+            <input id="customerPhone" type="tel" inputmode="numeric" maxlength="10" dir="ltr" autocomplete="tel" placeholder="05XXXXXXXX">
+            <div class="error">أدخل رقم جوال سعودي صحيح يبدأ بـ 05.</div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" id="customerBack">رجوع</button>
+          <button class="btn btn-primary" id="customerNext" type="button">التالي</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="vehicle">
+        <div class="flow-title">
+          <div class="step">بيانات السيارة</div>
+          <h2>وش سيارتك؟</h2>
+          <p>تساعد بيانات السيارة في اختيار التخصص والورشة المناسبة.</p>
+        </div>
+        <div class="form-card form-grid">
+          <div class="field" data-field="make">
+            <label for="vehicleMake">الشركة المصنعة</label>
+            <select id="vehicleMake"></select>
+            <div class="error">اختر الشركة.</div>
+          </div>
+          <div class="field" data-field="model">
+            <label for="vehicleModel">الموديل</label>
+            <input id="vehicleModel" type="text" maxlength="40" placeholder="مثال: كامري">
+            <div class="error">اكتب الموديل.</div>
+          </div>
+          <div class="field" data-field="year">
+            <label for="vehicleYear">سنة الصنع</label>
+            <select id="vehicleYear" data-year-select></select>
+            <div class="error">اختر سنة الصنع.</div>
+          </div>
+          <div class="field" data-field="mileage">
+            <label for="vehicleMileage">ممشى السيارة</label>
+            <select id="vehicleMileage">
+              <option value="">اختر الممشى</option>
+              <option>أقل من 50 ألف كم</option>
+              <option>من 50 إلى 100 ألف كم</option>
+              <option>من 100 إلى 150 ألف كم</option>
+              <option>من 150 إلى 200 ألف كم</option>
+              <option>أكثر من 200 ألف كم</option>
+            </select>
+            <div class="error">اختر الممشى.</div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="customer">رجوع</button>
+          <button class="btn btn-primary" id="vehicleNext" type="button">التالي</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="location">
+        <div class="flow-title">
+          <div class="step">الموقع</div>
+          <h2>وين تبحث عن ورشة؟</h2>
+          <p>اختر إحدى مدن ومحافظات القصيم، أو استخدم تحديد موقع تجريبي.</p>
+        </div>
+        <div class="form-card form-grid one">
+          <button class="btn btn-light btn-block" id="useMockLocation" type="button">استخدام موقعي الحالي — محاكاة</button>
+          <div class="field" data-field="city">
+            <label for="customerCity">المدينة أو المحافظة</label>
+            <select id="customerCity"></select>
+            <div class="error">اختر موقع البحث.</div>
+          </div>
+          <div class="notice success hidden" id="locationNotice">تم تحديد موقع تجريبي داخل بريدة.</div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="vehicle">رجوع</button>
+          <button class="btn btn-primary" id="locationNext" type="button">متابعة</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="analyzing" aria-live="polite">
+        <div class="form-card ai-loader">
+          <div class="ai-core" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6l1 3 3 1v10l-3 1-1 3H9l-1-3-3-1V7l3-1z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M8.5 15h7"/></svg>
+          </div>
+          <h2>نفهم المشكلة مبدئيًا…</h2>
+          <p class="text-muted">نراجع وصفك وبيانات السيارة لنختار أسئلة مرتبطة بالحالة، دون تقديم تشخيص نهائي.</p>
+          <div class="loader-steps" id="analysisSteps">
+            <div class="loader-step active"><span class="dot"></span><span>قراءة وصف المشكلة</span></div>
+            <div class="loader-step"><span class="dot"></span><span>ربط الأعراض ببيانات السيارة</span></div>
+            <div class="loader-step"><span class="dot"></span><span>تحديد الأسئلة والتخصص المتوقع</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="questions">
+        <div class="flow-title">
+          <div class="step">أسئلة توضيحية</div>
+          <h2>كم سؤال بسيط ونكون أوضح</h2>
+          <p>الأسئلة تتغير بحسب وصف المشكلة وليست قائمة ثابتة.</p>
+        </div>
+        <div class="form-card">
+          <div class="badge info" id="questionCount">السؤال 1 من 4</div>
+          <h2 id="questionText" class="mt-16">—</h2>
+          <div class="answer-grid" id="answerGrid"></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-light" id="questionBack" type="button">السابق</button>
+          <button class="btn btn-primary" id="questionNext" type="button" disabled>التالي</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="guidance">
+        <div class="flow-title">
+          <div class="step">التوجيه المبدئي</div>
+          <h2>فهمنا مشكلتك</h2>
+          <p>نعرض مسارًا فنيًا مبدئيًا لتحديد التخصص، وليس تشخيصًا نهائيًا.</p>
+        </div>
+        <div class="form-card info-list">
+          <div class="info-row"><div class="info-label">السيارة</div><div class="info-value" id="guidanceVehicle">—</div></div>
+          <div class="info-row"><div class="info-label">المشكلة التي وصفتها</div><div class="info-value" id="guidanceProblem">—</div></div>
+          <div class="info-row"><div class="info-label">التوجيه الفني المبدئي</div><div class="info-value" id="guidanceText">—</div></div>
+          <div class="info-row"><div class="info-label">التخصص المناسب</div><div class="info-value"><span class="badge info" id="guidanceSpecialty">—</span></div></div>
+          <div class="info-row"><div class="info-label">الخدمة المقترحة كبداية</div><div class="info-value">فحص وتشخيص للمشكلة</div></div>
+        </div>
+        <div class="notice warning mt-12">التوجيه المعروض مبدئي ويهدف إلى مساعدتك في الوصول إلى التخصص المناسب، ولا يمثل تشخيصًا نهائيًا للعطل.</div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="questions">مراجعة الإجابات</button>
+          <button class="btn btn-dark" id="guidanceMatch" type="button">وين أوديها؟</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="maintenanceSummary">
+        <div class="flow-title">
+          <div class="step">مراجعة الطلب</div>
+          <h2>طلب الصيانة جاهز</h2>
+          <p>الخدمة واضحة، لذلك انتقلنا مباشرة للمطابقة دون تحليل أو أسئلة تشخيصية.</p>
+        </div>
+        <div class="form-card info-list">
+          <div class="info-row"><div class="info-label">الخدمة المطلوبة</div><div class="info-value" id="maintenanceSummaryService">—</div></div>
+          <div class="info-row"><div class="info-label">السيارة</div><div class="info-value" id="maintenanceSummaryVehicle">—</div></div>
+          <div class="info-row"><div class="info-label">المدينة</div><div class="info-value" id="maintenanceSummaryCity">—</div></div>
+          <div class="info-row"><div class="info-label">التخصص المطلوب</div><div class="info-value"><span class="badge info">صيانة دورية وخدمات سريعة</span></div></div>
+        </div>
+        <div class="notice info mt-12">لا تعرض المنصة سعرًا متوقعًا للخدمة أو الإصلاح. يتم التنسيق مباشرة مع الورشة بعد الترشيح.</div>
+        <div class="form-actions">
+          <button class="btn btn-light" type="button" data-back="location">تعديل الموقع</button>
+          <button class="btn btn-dark" id="maintenanceMatch" type="button">رشّح لي ورشة</button>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="matching" aria-live="polite">
+        <div class="form-card ai-loader">
+          <div class="ai-core" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h2>نطابق طلبك مع الورش الشريكة</h2>
+          <p class="text-muted">نراجع التخصص ونوع السيارة والموقع والتقييمات والالتزام لاختيار ورشة واحدة فقط.</p>
+          <div class="loader-steps">
+            <div class="loader-step done"><span class="dot">✓</span><span>تم إنشاء رقم الطلب</span></div>
+            <div class="loader-step active"><span class="dot"></span><span>مقارنة الورش المناسبة</span></div>
+            <div class="loader-step"><span class="dot"></span><span>تسجيل الإحالة قبل إظهار الورشة</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flow-screen" data-screen="result" aria-live="polite">
+        <div class="flow-title">
+          <div class="step">الورشة المقترحة</div>
+          <h2>هذه الورشة الأنسب لطلبك</h2>
+          <p id="resultIntro">تم اختيار ورشة شريكة واحدة فقط وتسجيل الإحالة.</p>
+        </div>
+        <article class="workshop-card">
+          <div class="workshop-cover">
+            <div class="workshop-heading">
+              <div class="workshop-logo" aria-hidden="true">
+                <svg width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m14.7 6.3 3-3a3.5 3.5 0 0 1-4.5 4.5l-7.6 7.6a2 2 0 1 0 2.8 2.8l7.6-7.6a3.5 3.5 0 0 1 4.5-4.5l-3 3"/></svg>
+              </div>
+              <div><h2 id="resultWorkshopName">—</h2><p>ورشة شريكة في وين أوديها</p></div>
+            </div>
+          </div>
+          <div class="workshop-body">
+            <div class="request-strip"><span>رقم الطلب</span><strong id="resultRequestId">—</strong></div>
+            <div class="metric-grid">
+              <div class="metric"><small>التقييم العام</small><strong><span class="stars">★</span> <span id="resultRating">—</span> من 5</strong></div>
+              <div class="metric"><small>عدالة الأسعار</small><strong><span class="stars">★</span> <span id="resultFairness">—</span> من 5</strong></div>
+              <div class="metric"><small>التقييمات الموثقة</small><strong id="resultRatingsCount">—</strong></div>
+              <div class="metric"><small>المسافة</small><strong id="resultDistance">—</strong></div>
+            </div>
+            <div class="info-list mt-16">
+              <div class="info-row"><div class="info-label">المدينة</div><div class="info-value" id="resultCity">—</div></div>
+              <div class="info-row"><div class="info-label">التخصص</div><div class="info-value" id="resultSpecialty">—</div></div>
+              <div class="info-row"><div class="info-label">مستوى الالتزام</div><div class="info-value" id="resultCommitment">—</div></div>
+              <div class="info-row"><div class="info-label">ينصح بها العملاء</div><div class="info-value" id="resultRecommend">—</div></div>
+            </div>
+            <div class="why-box"><strong>لماذا تم ترشيح هذه الورشة؟</strong><p id="resultReason">—</p></div>
+            <div class="inline-actions">
+              <button class="btn btn-success" id="openWhatsapp" type="button">التواصل عبر واتساب</button>
+              <a class="btn btn-light" id="trackRequestLink" href="track.html">متابعة الطلب</a>
+              <button class="btn btn-light" id="anotherWorkshop" type="button">أريد ورشة أخرى</button>
+            </div>
+          </div>
+        </article>
+        <div class="notice info mt-12">يمكن ترشيح حتى 3 ورش داخل نفس الطلب، لكن لا تظهر أكثر من ورشة واحدة في الوقت نفسه.</div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="whatsappModal" role="dialog" aria-modal="true" aria-labelledby="whatsappTitle">
+    <div class="modal-head">
+      <div><h3 id="whatsappTitle">رسالة واتساب جاهزة</h3><p>ستفتح المحادثة في نافذة جديدة، ولن تُرسل الرسالة حتى تضغط إرسال داخل واتساب.</p></div>
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button>
+    </div>
+    <div class="notice success" id="whatsappMessage" style="white-space:pre-line"></div>
+    <div class="inline-actions mt-16">
+      <a class="btn btn-success" id="openWhatsappLink" href="https://wa.me/" target="_blank" rel="noopener">فتح واتساب</a>
+      <button class="btn btn-light" id="copyWhatsappMessage" type="button">نسخ الرسالة</button>
+    </div>
+  </div>
+
+  <div class="modal" id="anotherModal" role="dialog" aria-modal="true" aria-labelledby="anotherTitle">
+    <div class="modal-head">
+      <div><h3 id="anotherTitle">سبب طلب ورشة أخرى</h3><p>اختيار السبب اختياري ويساعد في تسجيل نتيجة الإحالة السابقة.</p></div>
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button>
+    </div>
+    <div class="form-grid one" id="anotherReasons">
+      <label class="check-card"><input type="radio" name="anotherReason" value="لم يتم الرد">لم يتم الرد</label>
+      <label class="check-card"><input type="radio" name="anotherReason" value="لم نتفق على الموعد">لم نتفق على الموعد</label>
+      <label class="check-card"><input type="radio" name="anotherReason" value="لم يتم التفاهم على السعر">لم يتم التفاهم على السعر</label>
+      <label class="check-card"><input type="radio" name="anotherReason" value="الخدمة غير متوفرة">الخدمة غير متوفرة</label>
+      <label class="check-card"><input type="radio" name="anotherReason" value="لم أرغب في الاستمرار مع الورشة">لم أرغب في الاستمرار مع الورشة</label>
+      <label class="check-card"><input type="radio" name="anotherReason" value="سبب آخر">سبب آخر</label>
+    </div>
+    <button class="btn btn-dark btn-block mt-16" id="confirmAnotherWorkshop" type="button">رشّح لي ورشة أخرى</button>
+  </div>
+
+  <div data-site-footer></div>
+  <script src="assets/common.js"></script>
+  <script src="assets/customer.js"></script>
+</body>
+</html>
