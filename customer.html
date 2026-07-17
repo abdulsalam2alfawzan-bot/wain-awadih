@@ -1,0 +1,100 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#0b1d33" name="theme-color"/>
+<meta content="ابدأ طلبك في منصة وين أوديها دون حساب أو كلمة مرور." name="description"/>
+<meta content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" http-equiv="Content-Security-Policy"/>
+<title>ابدأ طلبك — وين أوديها؟</title>
+
+<link href="assets/images/favicon.png" rel="icon" type="image/png"/><link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body data-page="customer">
+<noscript><div class="noscript-banner">فعّل JavaScript في المتصفح لإكمال طلبك وحفظ تقدمك.</div></noscript>
+
+<header class="site-header unified-site-header" data-unified-header=""><a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a><div class="container nav-shell unified-header-shell"><a aria-label="وين أوديها — الرئيسية" class="brand unified-brand" href="index.html"><img alt="وين أوديها" class="brand-logo" height="283" src="assets/images/logo.png" width="900"/></a><span aria-current="page" class="current-page-label">ابدأ طلبك</span><button aria-controls="mainNav" aria-expanded="false" aria-label="فتح قائمة التنقل" class="nav-toggle" data-icon="menu" type="button"><span>القائمة</span></button><nav aria-label="التنقل الرئيسي" class="main-nav unified-main-nav" id="mainNav"><a href="index.html">الرئيسية</a><a aria-current="page" href="customer.html?fresh=1">ابدأ طلبك</a><a href="track.html">متابعة الطلب</a><a href="join.html">انضم كشريك</a><a href="workshop-login.html">دخول الشريك</a><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a></nav></div></header><main class="flow-shell" id="main-content">
+<div class="container flow-layout">
+<aside aria-label="تقدم الطلب" class="flow-sidebar">
+<div class="kicker">خطوات واضحة من البداية</div>
+<h1>طلب جديد</h1>
+<p id="flowServiceLabel">اختر ما تحتاجه، وسنحفظ تقدمك تلقائيًا على هذا الجهاز.</p>
+<div class="progress-wrap"><div class="progress-meta"><span id="progressLabel">اختيار الخدمة</span><span id="progressPercent">0%</span></div><div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-track" role="progressbar"><div class="progress-bar" id="progressBar"></div></div></div>
+<div class="legal-note mt-24">التوجيه مبدئي، والسعر والتشخيص النهائي لدى مقدم الخدمة بعد الفحص.</div>
+</aside>
+<div aria-live="polite" class="flow-content">
+<section class="flow-screen active" data-screen="service" tabindex="-1">
+<div class="kicker">ابدأ من احتياجك</div><h2>وش تحتاج لسيارتك؟</h2><p>اختر الخدمة الأقرب لحالتك، وستظهر لك الخطوات المطلوبة فقط.</p>
+<div class="service-choice-grid" id="serviceChoices">
+<button class="service-choice primary" data-service="problem" type="button"><span aria-hidden="true" class="service-choice-icon" data-service-icon="problem"></span><span class="service-choice-copy"><strong>عندي مشكلة في السيارة</strong><span>صف الأعراض وأجب عن أربعة أسئلة قصيرة لمعرفة التخصص والاستعجال.</span></span></button>
+<button class="service-choice" data-service="parts" type="button"><span aria-hidden="true" class="service-choice-icon" data-service-icon="parts"></span><span class="service-choice-copy"><strong>أبحث عن قطع غيار</strong><span>أدخل القطعة المطلوبة ورقم الهيكل إن توفر، واختر وكالة أو تجارية.</span></span></button>
+<button class="service-choice urgent-choice" data-service="tow" type="button"><span aria-hidden="true" class="service-choice-icon" data-service-icon="tow"></span><span class="service-choice-copy"><strong>أحتاج سطحة — عاجل</strong><span>شارك موقع السيارة واكتب وصف المكان للوصول إليك بسرعة.</span></span></button>
+<button class="service-choice" data-service="maintenance" type="button"><span aria-hidden="true" class="service-choice-icon" data-service-icon="maintenance"></span><span class="service-choice-copy"><strong>أبحث عن صيانة دورية</strong><span>اختر الخدمة وبيانات السيارة والمنطقة والمدينة.</span></span></button>
+</div>
+<div class="screen-actions"><a class="btn btn-ghost" href="index.html">إلغاء</a><button class="btn btn-primary" disabled="" id="serviceNext" type="button">التالي</button></div>
+</section>
+<section class="flow-screen" data-screen="customer" tabindex="-1">
+<div class="kicker">بيانات التواصل</div><h2>عرّفنا بك</h2><p>نحتاج الاسم الأول والجوال لربط الطلب ومتابعته دون إنشاء حساب.</p>
+<form id="customerForm" novalidate="">
+<div class="form-grid two"><div class="form-field"><label class="required" for="firstName">الاسم الأول</label><input autocomplete="given-name" id="firstName" maxlength="40" required=""/><span class="field-error" data-error-for="firstName"></span></div><div class="form-field"><label class="required" for="phone">رقم الجوال</label><input autocomplete="tel" id="phone" inputmode="tel" maxlength="10" placeholder="05XXXXXXXX" required=""/><span class="field-error" data-error-for="phone"></span></div></div>
+<div class="checkbox-stack mt-24"><label class="checkbox-line"><input id="privacyAccepted" required="" type="checkbox"/><span>أوافق على <a href="privacy.html" rel="noopener" target="_blank">سياسة الخصوصية</a> واستخدام البيانات لتشغيل الطلب.</span></label><label class="checkbox-line"><input id="termsAccepted" required="" type="checkbox"/><span>أوافق على <a href="terms.html" rel="noopener" target="_blank">الشروط وحدود مسؤولية المنصة</a>.</span></label><label class="checkbox-line"><input id="marketingMessages" type="checkbox"/><span>أرغب اختياريًا في تلقي العروض والخدمات الجديدة. رسائل متابعة الطلب ستصلك عند الحاجة.</span></label></div>
+<div class="screen-actions"><button class="btn btn-ghost" data-back="service" type="button">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+</form>
+</section>
+<section class="flow-screen" data-screen="vehicle" tabindex="-1">
+<div class="kicker">بيانات السيارة</div><h2>اختر سيارتك</h2><p>بعد اختيار الشركة ستظهر لك الموديلات التابعة لها.</p>
+<form id="vehicleForm" novalidate="">
+<div class="form-grid two">
+<div class="form-field"><label class="required" for="make">الشركة المصنعة</label><select id="make" required=""></select><span class="field-error" data-error-for="make"></span></div>
+<div class="form-field" hidden="" id="makeOtherField"><label class="required" for="makeOther">اسم الشركة</label><input id="makeOther" maxlength="60"/><span class="field-error" data-error-for="makeOther"></span></div>
+<div class="form-field"><label class="required" for="model">الموديل</label><select disabled="" id="model" required=""><option value="">اختر الشركة أولًا</option></select><span class="field-error" data-error-for="model"></span></div>
+<div class="form-field" hidden="" id="modelOtherField"><label class="required" for="modelOther">اسم الموديل</label><input id="modelOther" maxlength="60"/><span class="field-error" data-error-for="modelOther"></span></div>
+<div class="form-field"><label class="required" for="year" id="yearLabel">سنة الصنع</label><select id="year"></select><span class="field-error" data-error-for="year"></span></div>
+<div class="form-field" id="mileageField"><label class="required" for="mileage">ممشى السيارة</label><select id="mileage"></select><span class="field-error" data-error-for="mileage"></span></div>
+<div class="form-field" hidden="" id="fuelField"><label class="required" for="fuelType">نوع الوقود</label><select id="fuelType"></select><span class="field-error" data-error-for="fuelType"></span></div>
+</div>
+<div class="screen-actions"><button class="btn btn-ghost" data-back="customer" type="button">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+</form>
+</section>
+<section class="flow-screen" data-screen="location" tabindex="-1">
+<div class="kicker">موقع الخدمة</div><h2>حدد المنطقة ثم المدينة</h2><p id="locationHelp">شارك الموقع الدقيق عند الحاجة لتحسين المطابقة.</p>
+<form id="locationForm" novalidate="">
+<div class="form-grid two"><div class="form-field"><label class="required" for="region">المنطقة</label><select id="region" required=""></select><span class="field-error" data-error-for="region"></span></div><div class="form-field"><label class="required" for="city">المدينة</label><select disabled="" id="city" required=""><option value="">اختر المنطقة أولًا</option></select><span class="field-error" data-error-for="city"></span></div></div>
+<div class="location-capture mt-16"><button class="btn btn-light" data-icon="location" id="detectLocation" type="button">تحديد موقعي تلقائيًا</button><div class="field-hint" id="locationStatus" role="status">لم تتم مشاركة الموقع.</div></div>
+<div class="form-field mt-16"><label for="preciseLocation" id="preciseLocationLabel">الموقع الدقيق أو نقطة الالتقاء</label><input id="preciseLocation" maxlength="400" placeholder="مثال: حي الريان، قرب محطة كذا"/><span class="field-hint" id="preciseLocationHint">يمكن كتابة الموقع يدويًا، لكن السطحة تتطلب أيضًا مشاركة الإحداثيات.</span><span class="field-error" data-error-for="preciseLocation"></span></div>
+<div class="screen-actions"><button class="btn btn-ghost" data-back="vehicle" type="button">السابق</button><button class="btn btn-primary" type="submit">التالي</button></div>
+</form>
+</section>
+<section class="flow-screen" data-screen="path" tabindex="-1">
+<div class="kicker">تفاصيل الطلب</div><h2 id="pathTitle">وش المشكلة في سيارتك؟</h2><p id="pathDescription">اكتب وصفك بطريقتك.</p>
+<form id="pathForm" novalidate="">
+<div id="problemFields"><div class="form-field"><label class="required" for="problem">وصف المشكلة</label><textarea id="problem" maxlength="1200" placeholder="مثال: السيارة ترج إذا وقفت عند الإشارة وتظهر لمبة المكينة"></textarea><span class="field-hint">اكتب متى تظهر المشكلة وأي لمبة أو صوت لاحظته.</span><span class="field-error" data-error-for="problem"></span></div></div>
+<div hidden="" id="partsFields">
+<div class="form-field"><label for="vin">رقم الهيكل — يفضل كتابته</label><input autocomplete="off" id="vin" maxlength="40" placeholder="VIN / رقم الهيكل"/><span class="field-hint">يساعد المحل على التحقق بصورة أدق من مطابقة القطعة.</span></div>
+<div class="form-field mt-16"><label class="required" for="partName">اسم القطعة المطلوبة بدقة</label><input id="partName" maxlength="200" placeholder="مثال: كمبروسر مكيف أو مساعد أمامي يمين"/><span class="field-error" data-error-for="partName"></span></div>
+<div class="form-field mt-16"><label class="required" for="partType">نوع القطعة المفضل</label><select id="partType"></select><span class="field-error" data-error-for="partType"></span></div>
+</div>
+<div hidden="" id="towFields">
+<div class="urgent-panel"><strong>طلب سطحة عاجل</strong><p>موقع السيارة التلقائي ووصف المكان مطلوبان قبل الإحالة.</p></div>
+<div class="form-grid two"><div class="form-field"><label class="required" for="vehicleMoves">هل السيارة تتحرك؟</label><select id="vehicleMoves"></select><span class="field-error" data-error-for="vehicleMoves"></span></div><div class="form-field"><label for="towDestination">الوجهة إن كانت معروفة</label><input id="towDestination" maxlength="300" placeholder="مثال: ورشة في حي كذا"/></div></div>
+<div class="form-field mt-16"><label class="required" for="placeDescription">وصف مكان السيارة</label><textarea id="placeDescription" maxlength="500" placeholder="مثال: طريق الملك عبدالعزيز، بجوار المحطة، السيارة على الجهة اليمنى"></textarea><span class="field-error" data-error-for="placeDescription"></span></div>
+<div class="form-field mt-16"><label for="towNotes">وصف مختصر للحالة</label><textarea id="towNotes" maxlength="500" placeholder="مثال: السيارة لا تشتغل والإطار الأمامي متضرر"></textarea></div>
+</div>
+<div hidden="" id="maintenanceFields"><div class="form-field"><label class="required" for="maintenanceService">الخدمة المطلوبة</label><select id="maintenanceService"></select><span class="field-error" data-error-for="maintenanceService"></span></div><div class="form-field mt-16"><label for="maintenanceNotes">ملاحظة اختيارية</label><textarea id="maintenanceNotes" maxlength="500"></textarea></div></div>
+<div class="screen-actions"><button class="btn btn-ghost" data-back="location" type="button">السابق</button><button class="btn btn-primary" id="pathSubmit" type="submit">متابعة</button></div>
+</form>
+</section>
+<section class="flow-screen" data-screen="analyzing" tabindex="-1"><div class="loading-shell"><div class="skeleton-icon"></div><h2>نراجع الأعراض التي وصفتها</h2><p>نرتب المعلومات ونجهز أسئلة قصيرة تساعدك على معرفة الاتجاه المناسب مبدئيًا.</p><div class="loader-steps" id="analysisSteps"><div class="loader-step">فهم وصف المشكلة</div><div class="loader-step">تحديد التخصص المحتمل</div><div class="loader-step">إعداد أربعة أسئلة مناسبة</div></div></div></section>
+<section class="flow-screen" data-screen="questions" tabindex="-1"><div class="kicker" id="questionTitle">سؤال 1 من 4</div><h2 id="questionText"></h2><p>اختر الإجابة الأقرب. لا تقلق إن لم تكن متأكدًا.</p><div class="choice-row" id="answerChoices"></div><div class="screen-actions"><button class="btn btn-ghost" id="questionBack" type="button">السابق</button><button class="btn btn-primary" disabled="" id="questionNext" type="button">التالي</button></div></section>
+<section class="flow-screen" data-screen="guidance" tabindex="-1"><div class="kicker">النتيجة المبدئية</div><h2>هذا هو الاتجاه الأقرب</h2><div class="danger-panel" hidden="" id="dangerPanel"></div><div class="guidance-grid"><div class="guidance-item"><span>المشكلة المتوقعة مبدئيًا</span><strong id="expectedIssue"></strong></div><div class="guidance-item"><span>التخصص المناسب</span><strong id="specialty"></strong></div><div class="guidance-item"><span>درجة الاستعجال</span><strong id="urgency"></strong></div><div class="guidance-item"><span>ما يجب فعله الآن</span><strong id="nextStep"></strong></div></div><div class="legal-note mt-16" id="legalNotice"></div><div class="screen-actions"><button class="btn btn-ghost" data-back="path" type="button">تعديل الوصف</button><button class="btn btn-primary" data-icon="search" id="findPartner" type="button">وين أوديها؟</button></div></section>
+<section class="flow-screen" data-screen="review" tabindex="-1"><div class="kicker">قبل الترشيح</div><h2>راجع بيانات طلبك</h2><div class="guidance-grid" id="reviewContent"></div><div class="legal-note mt-16" id="serviceDisclaimer"></div><div class="screen-actions"><button class="btn btn-ghost" data-back="path" type="button">تعديل</button><button class="btn btn-primary" data-icon="search" id="reviewMatch" type="button">ابحث عن شريك</button></div></section>
+<section class="flow-screen" data-screen="matching" tabindex="-1"><div class="loading-shell"><div class="skeleton-icon"></div><h2>نبحث عن الشريك الأنسب لطلبك</h2><div class="loader-steps"><div class="loader-step">تأكيد بيانات الطلب</div><div class="loader-step">مطابقة الخدمة والمدينة</div><div class="loader-step">تجهيز بيانات التواصل</div></div></div></section>
+<section class="flow-screen" data-screen="result" tabindex="-1"><div class="success-panel" id="resultHeader"></div><div id="partnerResult"></div><section aria-labelledby="contactPartnerTitle" class="contact-card mt-16"><div><div class="kicker">جاهز للتواصل</div><h2 id="contactPartnerTitle">تواصل مع الشريك</h2><p>جهزنا رسالة مختصرة تحتوي على رقم الطلب وتفاصيل الخدمة.</p></div><div class="button-row contact-actions"><a class="btn btn-primary" href="#" id="whatsappLink" rel="noopener" target="_blank">التواصل عبر واتساب</a><button class="btn btn-light" id="copyWhatsapp" type="button">نسخ الرسالة</button></div></section><section class="private-link-card mt-24"><div><span class="pill">احتفظ به</span><h2>رابط طلبك الخاص</h2><p>للعودة والمتابعة دون كلمة مرور.</p></div><div class="compact-link-row"><input aria-label="رابط الطلب الخاص" id="privateLink" readonly=""/><button aria-label="نسخ رابط الطلب" class="icon-action" id="copyPrivateLink" type="button">نسخ</button><a aria-label="فتح متابعة الطلب" class="icon-action" href="track.html" id="openTrackLink">فتح</a><a aria-label="طلب شريك آخر" class="icon-action alternative-action" href="track.html" id="requestAlternativeLink">↻ <span>أريد ورشة أخرى</span></a></div></section></section>
+<section class="flow-screen" data-screen="noMatch" tabindex="-1"><div class="empty-state"><h2>لا يوجد تطابق حاليًا</h2><p id="noMatchReason"></p><p>عدّل المدينة أو الموقع، أو أعد المحاولة لاحقًا عند توفر شريك مناسب.</p><div class="screen-actions"><button class="btn btn-light" data-back="location" type="button">تعديل الموقع</button><a class="btn btn-primary" href="index.html">الرئيسية</a></div></div></section>
+</div>
+</div>
+</main>
+
+<footer class="site-footer unified-site-footer" data-unified-footer=""><div class="container unified-footer-shell"><a aria-label="وين أوديها — الرئيسية" class="footer-logo-link" href="index.html"><span class="footer-logo-plate"><img alt="وين أوديها" class="footer-logo" height="283" src="assets/images/logo.png" width="900"/></span></a><nav aria-label="روابط الموقع" class="unified-footer-nav"><a href="index.html">الرئيسية</a><a href="track.html">متابعة الطلب</a><a href="join.html">انضم كشريك</a><a href="workshop-login.html">دخول الشريك</a><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a></nav><span class="unified-footer-copy">© 2026 وين أوديها</span></div></footer><script defer="" src="assets/config.js"></script><script defer="" src="assets/automotive-data.js"></script><script defer="" src="assets/storage.js"></script><script defer="" src="assets/seed.js"></script><script defer="" src="assets/ai-engine.js"></script><script defer="" src="assets/matching-engine.js"></script><script defer="" src="assets/lifecycle.js"></script><script defer="" src="assets/common.js"></script><script defer="" src="assets/customer.js"></script>
+</body>
+</html>

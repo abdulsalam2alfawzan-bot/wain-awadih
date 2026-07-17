@@ -1,0 +1,139 @@
+{
+  "pages": 12,
+  "passed": 12,
+  "issues": [],
+  "rows": [
+    {
+      "page": "404.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "customer.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "index.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "join-status.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "join.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "payment.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "privacy.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "receipt.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "terms.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "track.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "workshop-dashboard.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    },
+    {
+      "page": "workshop-login.html",
+      "header": true,
+      "header_logo": true,
+      "footer": true,
+      "footer_logo": true,
+      "footer_links": true,
+      "order": true,
+      "aria_current": true,
+      "result": true
+    }
+  ]
+}

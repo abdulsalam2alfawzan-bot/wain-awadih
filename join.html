@@ -1,0 +1,141 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#0b1d33" name="theme-color"/>
+<meta content="قدّم طلب انضمام كشريك في منصة وين أوديها وفق نوع نشاطك." name="description"/>
+<meta content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" http-equiv="Content-Security-Policy"/>
+<title>انضم كشريك — وين أوديها؟</title>
+
+<link href="assets/images/favicon.png" rel="icon" type="image/png"/><link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body data-page="join">
+
+<header class="site-header unified-site-header" data-unified-header=""><a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a><div class="container nav-shell unified-header-shell"><a aria-label="وين أوديها — الرئيسية" class="brand unified-brand" href="index.html"><img alt="وين أوديها" class="brand-logo" height="283" src="assets/images/logo.png" width="900"/></a><span aria-current="page" class="current-page-label">انضم كشريك</span><button aria-controls="mainNav" aria-expanded="false" aria-label="فتح قائمة التنقل" class="nav-toggle" data-icon="menu" type="button"><span>القائمة</span></button><nav aria-label="التنقل الرئيسي" class="main-nav unified-main-nav" id="mainNav"><a href="index.html">الرئيسية</a><a href="customer.html?fresh=1">ابدأ طلبك</a><a href="track.html">متابعة الطلب</a><a aria-current="page" href="join.html">انضم كشريك</a><a href="workshop-login.html">دخول الشريك</a><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a></nav></div></header><main class="flow-shell" id="main-content">
+<div class="container flow-layout">
+<aside class="flow-sidebar">
+<div class="kicker light-kicker">ابدأ شراكتك بخطوات واضحة</div>
+<h1>انضم إلى شبكة الشركاء</h1>
+<p>اختر نوع نشاطك وأكمل البيانات التي تساعدنا على مطابقة الإحالات المناسبة لك.</p>
+<div class="progress-wrap">
+<div class="progress-meta"><span id="joinProgressLabel">البيانات الأساسية</span><span id="joinProgressPercent">20%</span></div>
+<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-track" role="progressbar"><div class="progress-bar" id="joinProgressBar"></div></div>
+</div>
+<div class="legal-note mt-24">أدخل بيانات دقيقة؛ فهي الأساس في مطابقة الطلبات وعرض معلومات نشاطك للعملاء.</div>
+</aside>
+<div class="flow-content">
+<form id="joinForm" novalidate="">
+<section class="flow-screen active" data-join-step="1" tabindex="-1">
+<div class="kicker">الخطوة 1 من 5</div>
+<h2>نوع الشريك والبيانات الأساسية</h2>
+<p>ستظهر لك الوثائق والحقول المناسبة لنوع نشاطك.</p>
+<div class="form-grid two">
+<div class="form-field"><label class="required" for="partnerType">نوع الشريك</label><select id="partnerType" required=""><option value="">اختر</option><option value="workshop">ورشة إصلاح وتشخيص</option><option value="maintenance">مركز صيانة دورية</option><option value="parts">محل قطع غيار</option><option value="tow">مقدم خدمة سطحة</option></select></div>
+<div class="form-field"><label class="required" for="businessName">اسم المنشأة أو مقدم الخدمة</label><input id="businessName" maxlength="100" required=""/></div>
+<div class="form-field"><label class="required" for="tradeName">الاسم التجاري</label><input id="tradeName" maxlength="100" required=""/></div>
+<div class="form-field"><label class="required" for="activityDescription">وصف مختصر للنشاط</label><textarea id="activityDescription" maxlength="500" required=""></textarea></div>
+<div class="form-field"><label class="required" for="joinRegion">المنطقة</label><select id="joinRegion" required=""></select></div>
+<div class="form-field"><label class="required" for="joinCity">المدينة</label><select disabled="" id="joinCity" required=""><option value="">اختر المنطقة أولًا</option></select></div>
+<div class="form-field"><label class="required" for="address">العنوان</label><input id="address" maxlength="250" required=""/></div>
+<div class="form-field"><label class="required" for="googleMapsUrl">رابط الموقع على خرائط Google</label><input id="googleMapsUrl" maxlength="1200" placeholder="https://maps.google.com/..." required="" type="url"/></div>
+<div class="form-field"><label class="required" for="joinWhatsapp">رقم واتساب</label><input id="joinWhatsapp" inputmode="tel" maxlength="10" placeholder="05XXXXXXXX" required=""/></div>
+<div class="form-field"><label for="secondaryPhone">رقم تواصل إضافي</label><input id="secondaryPhone" inputmode="tel" maxlength="10"/></div>
+</div>
+<section class="activity-block mt-24" hidden="" id="businessDocuments">
+<div class="section-head compact"><h3>الوثائق النظامية</h3><p>مطلوبة للورش ومراكز الصيانة ومحلات قطع الغيار.</p></div>
+<div class="form-grid two">
+<div class="form-field"><label class="required" for="commercialRegistration">رقم السجل التجاري</label><input id="commercialRegistration" maxlength="40"/></div>
+<div class="form-field"><label class="required" for="registeredName">اسم المنشأة حسب السجل</label><input id="registeredName" maxlength="120"/></div>
+<div class="form-field"><label for="commercialExpiry">تاريخ انتهاء السجل</label><input id="commercialExpiry" type="date"/></div>
+</div>
+</section>
+<section class="activity-block mt-24" hidden="" id="towDocuments">
+<div class="section-head compact"><h3>بيانات تشغيل السطحة</h3><p>أدخل بيانات بطاقة التشغيل والمركبة المستخدمة لتقديم الخدمة.</p></div>
+<div class="form-grid two">
+<div class="form-field"><label class="required" for="operationCardNumber">رقم بطاقة التشغيل</label><input id="operationCardNumber" maxlength="50"/></div>
+<div class="form-field"><label class="required" for="operationCardExpiry">تاريخ انتهاء بطاقة التشغيل</label><input id="operationCardExpiry" type="date"/></div>
+<div class="form-field"><label class="required" for="towVehiclePlate">رقم لوحة مركبة السطحة</label><input id="towVehiclePlate" maxlength="30"/></div>
+</div>
+</section>
+<div class="screen-actions"><a class="btn btn-ghost" href="index.html">إلغاء</a><button class="btn btn-primary" data-join-next="2" type="button">التالي</button></div>
+</section>
+<section class="flow-screen" data-join-step="2" tabindex="-1">
+<div class="kicker">الخطوة 2 من 5</div>
+<h2>ساعات العمل لكل يوم</h2>
+<p>حدد مواعيد الاستقبال لكل يوم، وأضف فترة ثانية عند الحاجة.</p>
+<div class="button-row mt-16"><button class="btn btn-light btn-sm" id="copySundaySchedule" type="button">نسخ ساعات الأحد لبقية الأيام المفتوحة</button><button class="btn btn-ghost btn-sm" id="openAllDays" type="button">فتح جميع الأيام</button></div>
+<div class="daily-schedule-list mt-16" id="dailyScheduleEditor"></div>
+<div class="screen-actions"><button class="btn btn-ghost" data-join-back="1" type="button">السابق</button><button class="btn btn-primary" data-join-next="3" type="button">التالي</button></div>
+</section>
+<section class="flow-screen" data-join-step="3" tabindex="-1">
+<div class="kicker">الخطوة 3 من 5</div>
+<h2>التغطية والخدمات</h2>
+<div class="form-field"><label class="required" for="coverageCities">مدن التغطية</label><select id="coverageCities" multiple="" required="" size="7"></select><span class="field-hint">تُضاف مدينتك الأساسية تلقائيًا، ويمكنك تحديد مدن إضافية تخدمها.</span></div>
+<section class="activity-block mt-24" hidden="" id="workshopAdaptive">
+<div class="section-head compact"><h3>تخصصات الورشة</h3><p>اختر تخصصاتك ورتبها حسب الأولوية، وسيُعتمد الأول كتخصص رئيسي.</p></div>
+<div class="priority-selector" id="specialtySelector"><div><h3>التخصصات المتاحة</h3><div class="selector-list" id="availableSpecialties"></div></div><div><h3>التخصصات المختارة</h3><ol class="selected-priority-list" id="selectedSpecialties"></ol></div></div>
+</section>
+<section class="activity-block mt-24" hidden="" id="makeAndFuelAdaptive">
+<div class="section-head compact"><h3 id="makeSectionTitle">الشركات المصنعة التي تخدمها</h3><p>اختر العلامات التي تخدمها ورتبها حسب الأولوية.</p></div>
+<div class="priority-selector" id="makeSelector"><div><h3>الشركات المتاحة</h3><div class="selector-list" id="availableMakes"></div></div><div><h3>الشركات المختارة</h3><ol class="selected-priority-list" id="selectedMakes"></ol></div></div>
+<fieldset class="form-field mt-24" id="fuelTypesField"><legend class="required">أنواع الوقود التي تخدمها</legend><div class="checkbox-grid" id="fuelTypesJoin"></div></fieldset>
+</section>
+<section class="activity-block mt-24" hidden="" id="towAdaptive">
+<div class="section-head compact"><h3>نطاق خدمة السطحة</h3><p>حدد أنواع المركبات التي تستطيع نقلها ضمن نطاق تغطيتك.</p></div>
+<div class="form-field"><label class="required" for="towVehicleTypes">أنواع المركبات الممكن نقلها</label><textarea id="towVehicleTypes" maxlength="250" placeholder="مثال: سيدان، دفع رباعي، بيك أب"></textarea></div>
+</section>
+<section class="activity-block mt-24" hidden="" id="maintenanceAdaptive">
+<div class="section-head compact"><h3>خدمات الصيانة الدورية</h3><p>اختر خدمات الصيانة المتوفرة لديك.</p></div>
+<div class="form-field"><label class="required" for="maintenanceServicesJoin">الخدمات المتاحة</label><select id="maintenanceServicesJoin" multiple="" size="8"></select></div>
+</section>
+<section class="activity-block mt-24" hidden="" id="partsAdaptive">
+<div class="section-head compact"><h3>أنواع قطع الغيار</h3><p>حدد أنواع القطع التي يوفرها المحل عادةً، وسيؤكد العميل التوفر مباشرة معك.</p></div>
+<fieldset class="form-field"><legend class="required">أنواع القطع التي يوفرها المحل عادةً</legend><div class="checkbox-grid"><label class="checkbox-line"><input name="partTypesJoin" type="checkbox" value="وكالة"/><span>وكالة</span></label><label class="checkbox-line"><input name="partTypesJoin" type="checkbox" value="تجارية"/><span>تجارية</span></label></div></fieldset>
+</section>
+<div class="screen-actions"><button class="btn btn-ghost" data-join-back="2" type="button">السابق</button><button class="btn btn-primary" data-join-next="4" type="button">التالي</button></div>
+</section>
+<section class="flow-screen" data-join-step="4" tabindex="-1">
+<div class="kicker">الخطوة 4 من 5</div>
+<h2>خصم عملاء «وين أوديها»</h2>
+<label class="checkbox-line"><input id="offersDiscount" type="checkbox"/><span>أقدم خصمًا لعملاء «وين أوديها»</span></label>
+<div class="mt-16" hidden="" id="discountJoinFields">
+<div class="form-grid two">
+<div class="form-field"><label class="required" for="joinDiscountPercent">نسبة الخصم %</label><input id="joinDiscountPercent" max="50" min="1" type="number"/></div>
+<div class="form-field"><label class="required" for="joinDiscountStart">تاريخ البداية</label><input id="joinDiscountStart" type="date"/></div>
+</div>
+<fieldset class="form-field mt-16"><legend class="required">نطاق الخصم</legend><div class="button-row"><label class="radio-line"><input checked="" name="joinDiscountScope" type="radio" value="all"/> جميع الخدمات</label><label class="radio-line"><input name="joinDiscountScope" type="radio" value="selected"/> خدمات مختارة</label></div></fieldset>
+<div class="form-field mt-16" hidden="" id="joinSelectedServicesField"><label for="joinDiscountServices">اكتب الخدمات المختارة — اختياري</label><textarea id="joinDiscountServices" maxlength="500" placeholder="مثال: أجور اليد للميكانيكا والكهرباء"></textarea></div>
+<div class="form-field mt-16"><label for="joinDiscountConditions">الشروط والاستثناءات</label><textarea id="joinDiscountConditions" maxlength="700"></textarea></div>
+<label class="checkbox-line mt-16"><input checked="" id="continuousDiscount" type="checkbox"/><span>يستمر الخصم حتى أوقفه بنفسي من صفحة الشريك</span></label>
+<div class="form-field mt-16" hidden="" id="joinDiscountEndField"><label class="required" for="joinDiscountEnd">تاريخ انتهاء الخصم</label><input id="joinDiscountEnd" type="date"/></div>
+</div>
+<div class="screen-actions"><button class="btn btn-ghost" data-join-back="3" type="button">السابق</button><button class="btn btn-primary" data-join-next="5" type="button">التالي</button></div>
+</section>
+<section class="flow-screen" data-join-step="5" tabindex="-1">
+<div class="kicker">الخطوة 5 من 5</div>
+<h2>الموافقات والتعهد</h2>
+<div class="guidance-grid" id="joinReview"></div>
+<div class="fee-policy-box mt-24"><h3>شرائح رسوم الوساطة</h3><ul><li>أقل من 50 ريالًا: بلا رسوم.</li><li>50–أقل من 200: 5 ريالات.</li><li>200–400: 10 ريالات.</li><li>أكثر من 400: 25 ريالًا.</li></ul><p>تصدر الفاتورة في اليوم الأول من الشهر، ويصبح السداد إلزاميًا عند بلوغ الرصيد 100 ريال. مهلة الاعتراض 15 يومًا.</p></div>
+<div class="checkbox-stack mt-24">
+<label class="checkbox-line"><input id="agreementAccepted" required="" type="checkbox"/><span>أوافق على اتفاقية الشراكة وآلية الإحالات.</span></label>
+<label class="checkbox-line"><input id="feesAccepted" required="" type="checkbox"/><span>أوافق على شرائح الرسوم والفوترة وحد السداد ومهلة الاعتراض.</span></label>
+<label class="checkbox-line"><input id="ratingsAccepted" required="" type="checkbox"/><span>أوافق على التقييمات الموثقة وسياسة الاعتراضات.</span></label>
+<label class="checkbox-line"><input id="privacyTrustAccepted" required="" type="checkbox"/><span>ألتزم بحماية بيانات العملاء وعدم استخدامها للتسويق دون موافقة.</span></label>
+<label class="checkbox-line honesty-pledge"><input id="honestyPledge" required="" type="checkbox"/><span>أتعهد أمام الله تعالى ثم أمام منصة «وين أوديها» بأن جميع البيانات التي قدمتها صحيحة، وأن أتعامل مع إحالات العملاء ورسوم الوساطة بأمانة وصدق، وألا أخفي أي خدمة تمت عن طريق المنصة، وأن ألتزم بالخصومات المعلنة، وبحقوق العملاء، وبالشروط والسياسات المعتمدة. وأتحمل مسؤولية أي بيانات أو تأكيدات غير صحيحة أقدمها.</span></label>
+</div>
+<div class="screen-actions"><button class="btn btn-ghost" data-join-back="4" type="button">السابق</button><button class="btn btn-primary" type="submit">إرسال طلب الانضمام</button></div>
+</section>
+</form>
+<section class="flow-screen" id="joinSuccess" tabindex="-1">
+<div class="success-panel"><strong>وصلنا طلب انضمامك</strong><p>احتفظ برقم الطلب لمتابعة حالة الانضمام في أي وقت.</p></div>
+<div class="guidance-grid mt-16"><div class="guidance-item"><span>رقم طلب الانضمام</span><strong id="joinApplicationNumber"></strong></div><div class="guidance-item"><span>الحالة</span><strong>تم الاستلام — قيد المراجعة</strong></div></div>
+<div class="screen-actions"><a class="btn btn-primary" href="join-status.html" id="joinStatusLink">متابعة الطلب</a><a class="btn btn-light" href="index.html">الرئيسية</a></div>
+</section>
+</div>
+</div>
+</main>
+
+<footer class="site-footer unified-site-footer" data-unified-footer=""><div class="container unified-footer-shell"><a aria-label="وين أوديها — الرئيسية" class="footer-logo-link" href="index.html"><span class="footer-logo-plate"><img alt="وين أوديها" class="footer-logo" height="283" src="assets/images/logo.png" width="900"/></span></a><nav aria-label="روابط الموقع" class="unified-footer-nav"><a href="index.html">الرئيسية</a><a href="track.html">متابعة الطلب</a><a aria-current="page" href="join.html">انضم كشريك</a><a href="workshop-login.html">دخول الشريك</a><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a></nav><span class="unified-footer-copy">© 2026 وين أوديها</span></div></footer><script defer="" src="assets/config.js"></script><script defer="" src="assets/automotive-data.js"></script><script defer="" src="assets/storage.js"></script><script defer="" src="assets/seed.js"></script><script defer="" src="assets/lifecycle.js"></script><script defer="" src="assets/common.js"></script><script defer="" src="assets/join.js"></script>
+</body>
+</html>
