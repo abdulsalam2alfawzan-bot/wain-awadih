@@ -4,96 +4,151 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b1d33">
-  <meta name="description" content="وين أوديها منصة ويب عربية تساعد صاحب السيارة على فهم المشكلة مبدئيًا والوصول إلى شريك واحد مناسب.">
+  <meta name="description" content="وين أوديها تساعدك على فهم احتياج سيارتك والوصول إلى مقدم الخدمة المناسب بخطوات واضحة وسريعة.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
-  <title>وين أوديها؟ — عندك مشكلة في السيارة؟</title>
+  <title>وين أوديها؟ — وجهتك لخدمة سيارتك</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="home">
-  <noscript><div class="noscript-banner">يحتاج هذا النموذج إلى JavaScript لتشغيل الرحلات والحفظ المحلي.</div></noscript>
+  <noscript><div class="noscript-banner">فعّل JavaScript في المتصفح لبدء طلبك وحفظ تقدمك.</div></noscript>
   <div data-site-header></div>
 
   <main id="main-content">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">منصة توجيه وإحالة سيارات</div>
-          <h1>عندك مشكلة في السيارة؟<br><span>قل لنا وش فيها… ونقول لك وين توديها.</span></h1>
-          <p>نفهم وصفك مبدئيًا، ونحدد التخصص ودرجة الاستعجال والخطوة التالية، ثم نرشح لك شريكًا واحدًا مناسبًا داخل مدينتك. لا تشخيص نهائي، ولا أسعار تقديرية، ولا قائمة تربكك.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="customer.html?service=problem&fresh=1">ابدأ مسار المشكلة</a>
-            <a class="btn btn-light" href="track.html">متابعة طلب سابق</a>
+    <section class="home-hero" aria-labelledby="homeHeroTitle">
+      <div class="container home-hero-layout">
+        <div class="home-hero-copy">
+          <span class="home-badge" data-icon="car">خدمة واضحة من أول خطوة</span>
+          <h1 id="homeHeroTitle">سيارتك فيها مشكلة؟<br><span>نوجّهك للمكان المناسب.</span></h1>
+          <p>صف المشكلة بطريقتك، واعرف التخصص ودرجة الاستعجال، ثم تواصل مع شريك واحد يناسب طلبك.</p>
+
+          <div class="home-primary-actions">
+            <a class="btn btn-primary home-main-cta" data-icon="car" href="customer.html?service=problem&amp;fresh=1">عندي مشكلة في السيارة</a>
+            <a class="home-inline-link" data-icon="track" href="track.html">لدي طلب وأريد متابعته</a>
           </div>
-          <div class="hero-assurances" aria-label="مزايا الخدمة">
-            <span>بدون تطبيق</span><span>بدون كلمة مرور</span><span>شريك واحد كل مرة</span><span>متابعة عبر رابط خاص</span>
-          </div>
+
+          <ul class="home-trust-list" aria-label="مزايا الخدمة">
+            <li data-icon="phone">تعمل مباشرة من الجوال</li>
+            <li data-icon="lock">دون حساب أو كلمة مرور</li>
+            <li data-icon="partner">شريك واحد في كل مرة</li>
+          </ul>
         </div>
 
-        <div class="hero-panel">
-          <div class="kicker">اختيار واضح بخطوات قليلة</div>
-          <div class="main-path-card">
-            <div class="path-icon" aria-hidden="true">!</div>
-            <h2>عندي مشكلة في السيارة</h2>
-            <p>اشرح المشكلة بطريقتك، ونساعدك على فهم الاحتمال الأقرب والوصول إلى التخصص المناسب.</p>
-            <a class="btn btn-primary btn-block mt-16" href="customer.html?service=problem&fresh=1">ابدأ طلبك</a>
+        <aside class="home-summary-card" aria-label="كيف تساعدك وين أوديها">
+          <div class="home-summary-head">
+            <span class="home-summary-icon" data-icon="search" aria-hidden="true"></span>
+            <div>
+              <span>الطريق الأقصر للخدمة المناسبة</span>
+              <strong>من وصف بسيط إلى تواصل مباشر</strong>
+            </div>
           </div>
-          <h3 class="mt-24">خدمات أخرى</h3>
-          <div class="other-services">
-            <a class="service-card" href="customer.html?service=parts&fresh=1"><div class="path-icon">ق</div><h3>محل قطع غيار</h3><p>اكتب القطعة ورقم الهيكل الموصى به، ونرشح محلًا مناسبًا.</p></a>
-            <a class="service-card" href="customer.html?service=tow&fresh=1"><div class="path-icon">س</div><h3>أحتاج سطحة</h3><p>طلب عاجل يعتمد على موقع السيارة ووصف المكان.</p></a>
-            <a class="service-card" href="customer.html?service=maintenance&fresh=1"><div class="path-icon">ص</div><h3>صيانة دورية</h3><p>اختر الخدمة والسيارة والمدينة.</p></a>
+          <ol class="home-summary-steps">
+            <li><span>1</span><div><strong>صف احتياجك</strong><small>أدخل بيانات السيارة والمشكلة أو الخدمة.</small></div></li>
+            <li><span>2</span><div><strong>اعرف وجهتك</strong><small>نحدد التخصص والخطوة المناسبة بوضوح.</small></div></li>
+            <li><span>3</span><div><strong>تواصل مباشرة</strong><small>نرشح شريكًا واحدًا وتفتح واتساب فورًا.</small></div></li>
+          </ol>
+          <p class="home-summary-note" data-icon="shield">التوجيه مبدئي، والفحص النهائي لدى مقدم الخدمة.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="home-services-section" aria-labelledby="otherServicesTitle">
+      <div class="container">
+        <div class="home-section-heading">
+          <div>
+            <span class="home-section-kicker">خدمات أخرى</span>
+            <h2 id="otherServicesTitle">اختر ما تحتاجه الآن</h2>
           </div>
+          <p>ثلاث خدمات مختصرة للوصول إلى الجهة المناسبة دون بحث طويل.</p>
+        </div>
+
+        <div class="home-service-grid">
+          <a class="home-service-card home-service-parts" href="customer.html?service=parts&amp;fresh=1">
+            <span class="home-service-icon" data-service-icon="parts" aria-hidden="true"></span>
+            <div class="home-service-content">
+              <h3>قطع الغيار</h3>
+              <p>اكتب القطعة وبيانات سيارتك، وتواصل مع محل مناسب.</p>
+              <span class="home-card-action" data-icon="arrow">ابدأ الطلب</span>
+            </div>
+          </a>
+
+          <a class="home-service-card home-service-tow" href="customer.html?service=tow&amp;fresh=1">
+            <span class="home-service-icon" data-service-icon="tow" aria-hidden="true"></span>
+            <div class="home-service-content">
+              <div class="home-service-title-row">
+                <h3>سطحة</h3>
+                <span class="home-urgent-label">عاجل</span>
+              </div>
+              <p>حدّد موقع السيارة ووصف المكان للوصول إلى مقدم خدمة.</p>
+              <span class="home-card-action" data-icon="arrow">اطلب سطحة</span>
+            </div>
+          </a>
+
+          <a class="home-service-card home-service-maintenance" href="customer.html?service=maintenance&amp;fresh=1">
+            <span class="home-service-icon" data-service-icon="maintenance" aria-hidden="true"></span>
+            <div class="home-service-content">
+              <h3>الصيانة الدورية</h3>
+              <p>اختر الخدمة وسيارتك ومدينتك للوصول إلى مركز مناسب.</p>
+              <span class="home-card-action" data-icon="arrow">اختر الصيانة</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="home-access-section" aria-labelledby="homeAccessTitle">
       <div class="container">
-        <div class="section-head center">
-          <div class="kicker">كيف تعمل المنصة؟</div>
-          <h2>رحلة قصيرة، وقرار أوضح</h2>
-          <p>نقلل المدخلات ونحتفظ بكل شيء داخل الطلب، بحيث لا تبدأ من الصفر عند طلب شريك بديل.</p>
+        <div class="home-section-heading home-section-heading-compact">
+          <div>
+            <span class="home-section-kicker">روابط سريعة</span>
+            <h2 id="homeAccessTitle">أكمل من حيث توقفت</h2>
+          </div>
         </div>
-        <div class="cards-grid">
-          <article class="card"><span class="pill">1</span><h3>اختر الخدمة</h3><p>المشكلة هي المسار الرئيسي، والخدمات الأخرى أبسط وأقصر.</p></article>
-          <article class="card"><span class="pill">2</span><h3>أدخل بيانات السيارة</h3><p>الموديلات تتغير حسب الشركة، والموقع الدقيق لا يطلب إلا عند الحاجة.</p></article>
-          <article class="card"><span class="pill">3</span><h3>نحدد التخصص</h3><p>أربعة أسئلة ديناميكية تساعد محرك AI المحلي على تقديم توقع احتمالي واستعجال وخطوة تالية.</p></article>
-          <article class="card"><span class="pill">4</span><h3>شريك واحد</h3><p>تُسجل الإحالة أولًا، ثم تظهر بيانات الشريك وواتساب ورابط المتابعة.</p></article>
-          <article class="card"><span class="pill">5</span><h3>متابعة موثقة</h3><p>تأكيد تلقي الخدمة، وتسجيل فئة التكلفة، وتقييم مرتبط بإحالة فعلية.</p></article>
-          <article class="card"><span class="pill">6</span><h3>بديل دون إعادة</h3><p>حتى ثلاثة شركاء داخل نفس الطلب مع استبعاد السابق.</p></article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head center">
-          <div class="kicker">بوابات مترابطة</div>
-          <h2>رحلة متكاملة للعميل والشريك</h2>
-          <p>ترتبط الطلبات والإحالات والمتابعة ولوحة الشريك ضمن تجربة واحدة.</p>
-        </div>
-        <div class="portal-grid">
-          <a class="card" href="customer.html?fresh=1"><div class="path-icon">ع</div><h3>بوابة العميل</h3><p>المسارات الأربعة، المطابقة، المتابعة، البدائل، والتقييم.</p><strong class="mt-16">ابدأ التجربة ←</strong></a>
-          <a class="card" href="workshop-login.html"><div class="path-icon">ش</div><h3>بوابة الشريك</h3><p>الإحالات والخدمات والتكلفة والاعتراضات والخصومات والرسوم والفواتير.</p><strong class="mt-16">دخول الشريك ←</strong></a>
-          <a class="card" href="join.html"><div class="path-icon">+</div><h3>انضم كشريك</h3><p>نموذج متكيف للورش ومحلات القطع والسطحات ومراكز الصيانة.</p><strong class="mt-16">قدّم طلبًا ←</strong></a>
-        </div>
-      </div>
-    </section>
+        <div class="home-access-grid">
+          <a class="home-access-card" href="track.html">
+            <span class="home-access-icon" data-icon="track" aria-hidden="true"></span>
+            <div>
+              <strong>متابعة الطلب</strong>
+              <p>افتح طلبك، تابع الإحالة، أو اطلب شريكًا آخر.</p>
+            </div>
+            <span class="home-access-arrow" data-icon="arrow" aria-hidden="true"></span>
+          </a>
 
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head"><div class="kicker">حدود الخدمة</div><h2>نقول الأمر كما هو</h2></div>
-        <div class="cards-grid">
-          <article class="card"><h3>ليست جهة تشخيص</h3><p>النتيجة مبدئية واحتمالية، والفحص النهائي لدى مقدم الخدمة المستقل.</p></article>
-          <article class="card"><h3>لا نعرض أسعارًا متوقعة</h3><p>السعر والتوفر والمطابقة النهائية تتأكد مباشرة مع مقدم الخدمة.</p></article>
-          <article class="card"><h3>لا نخترع شريكًا</h3><p>إذا لم يوجد شريك مطابق، تظهر حالة واضحة بدل عرض بيانات غير دقيقة.</p></article>
+          <a class="home-access-card" href="join.html">
+            <span class="home-access-icon home-access-partner" data-icon="partner" aria-hidden="true"></span>
+            <div>
+              <strong>انضم كشريك</strong>
+              <p>سجّل نشاطك وخدماتك ومدن التغطية لاستقبال الإحالات.</p>
+            </div>
+            <span class="home-access-arrow" data-icon="arrow" aria-hidden="true"></span>
+          </a>
         </div>
+
+        <p class="home-partner-login">لديك حساب شريك؟ <a href="workshop-login.html">دخول الشريك</a></p>
       </div>
     </section>
   </main>
 
-  <div data-site-footer></div>
+  <div class="mobile-action-bar" aria-label="إجراء سريع">
+    <a class="btn btn-primary btn-block" data-icon="car" href="customer.html?service=problem&amp;fresh=1">عندي مشكلة في السيارة</a>
+  </div>
+
+  <footer class="home-footer">
+    <div class="container home-footer-row">
+      <a class="brand home-footer-brand" href="index.html" aria-label="وين أوديها — الرئيسية">
+        <span class="brand-mark">و</span>
+        <span><strong>وين أوديها؟</strong><small>وجهتك لخدمة سيارتك</small></span>
+      </a>
+      <nav class="home-footer-links" aria-label="روابط التذييل">
+        <a href="privacy.html">الخصوصية</a>
+        <a href="terms.html">الشروط</a>
+        <a href="join-status.html">متابعة طلب الانضمام</a>
+      </nav>
+      <small>© 2026 وين أوديها. جميع الحقوق محفوظة.</small>
+    </div>
+  </footer>
+
   <script defer src="assets/config.js"></script>
   <script defer src="assets/automotive-data.js"></script>
   <script defer src="assets/storage.js"></script>
